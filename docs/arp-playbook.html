@@ -1,0 +1,406 @@
+<title>ARP Playbook</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: a graphite technical sheet. Sticky contents rail on wide screens, one reading column, saffron used only for the thesis and the gates. Single dark look, by brand choice. */
+:root {
+  --ground: #15171a;
+  --panel: #1c1f23;
+  --line: #2c3036;
+  --ink: #e9e6df;
+  --muted: #9ea2a9;
+  --saffron: #f0a93a;
+  --saffron-soft: rgba(240, 169, 58, 0.12);
+  --good: #7cc49a;
+  --display: "Bricolage Grotesque", "Avenir Next", "Segoe UI", sans-serif;
+  --body: "Source Serif 4", Georgia, "Times New Roman", serif;
+  --mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body {
+  background: var(--ground);
+  color: var(--ink);
+  font-family: var(--body);
+  font-size: 17px;
+  line-height: 1.6;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+.wrap { max-width: 1120px; margin: 0 auto; display: grid; grid-template-columns: 1fr; gap: 40px; padding-block: 40px 96px; }
+@media (min-width: 980px) { .wrap { grid-template-columns: 220px minmax(0, 1fr); } }
+nav.toc { font-family: var(--mono); font-size: 12.5px; }
+@media (min-width: 980px) { nav.toc { position: sticky; top: calc(24px + env(safe-area-inset-top, 0px)); align-self: start; } }
+nav.toc ol { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; }
+nav.toc a { color: var(--muted); text-decoration: none; }
+nav.toc a:hover, nav.toc a:focus-visible { color: var(--saffron); }
+nav.toc .group { color: var(--ink); letter-spacing: 0.08em; text-transform: uppercase; font-size: 11px; margin-top: 14px; }
+main { min-width: 0; max-width: 760px; }
+a { color: var(--saffron); }
+a:focus-visible, summary:focus-visible { outline: 2px solid var(--saffron); outline-offset: 2px; }
+h1, h2, h3 { font-family: var(--display); text-wrap: balance; line-height: 1.15; font-weight: 700; }
+h1 { font-size: clamp(34px, 6vw, 52px); margin: 18px 0 12px; letter-spacing: -0.01em; }
+h2 { font-size: 28px; margin: 0 0 14px; }
+h3 { font-size: 19px; margin: 28px 0 10px; font-weight: 500; }
+p { margin: 0 0 14px; max-width: 65ch; }
+.eyebrow { font-family: var(--mono); font-size: 11.5px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
+section { padding-block: 44px 8px; border-top: 1px solid var(--line); scroll-margin-top: 24px; }
+.hero { display: grid; gap: 8px; padding-bottom: 20px; }
+.sigil { width: 56px; height: 56px; }
+.pitch { border-left: 3px solid var(--saffron); background: var(--saffron-soft); padding: 18px 22px; border-radius: 10px; font-size: 18.5px; font-style: italic; margin: 12px 0 20px; }
+.pitch strong { font-style: normal; color: var(--saffron); }
+.goal { font-family: var(--display); font-size: 22px; line-height: 1.3; font-weight: 500; }
+.goal em { color: var(--saffron); font-style: normal; }
+ol.steps, ul.plain { padding-left: 22px; margin: 0 0 16px; display: grid; gap: 8px; max-width: 68ch; }
+.tablebox { overflow-x: auto; margin: 6px 0 22px; border: 1px solid var(--line); border-radius: 10px; }
+table { width: 100%; border-collapse: collapse; font-size: 14.5px; line-height: 1.45; }
+th, td { text-align: left; vertical-align: top; padding: 10px 12px; border-bottom: 1px solid var(--line); }
+th { font-family: var(--mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); font-weight: 400; background: var(--panel); }
+tr:last-child td { border-bottom: 0; }
+td:first-child { font-weight: 600; }
+.flow { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 12px; margin: 10px 0 22px; counter-reset: f; }
+.flow div { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 14px 16px; font-size: 15px; }
+.flow div b { display: block; font-family: var(--display); font-size: 16px; margin-bottom: 4px; }
+.flow div .tag { font-family: var(--mono); font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; }
+.flow .end { border-color: var(--saffron); background: var(--saffron-soft); }
+.flow .end .tag { color: var(--saffron); }
+.phases { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 12px; margin: 8px 0 18px; }
+.phase { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 16px; display: grid; gap: 8px; align-content: start; }
+.phase h3 { margin: 0; }
+.phase .when { font-family: var(--mono); font-size: 12px; color: var(--muted); }
+.phase ul { margin: 0; padding-left: 18px; font-size: 15px; display: grid; gap: 4px; }
+.gate { font-family: var(--mono); font-size: 12.5px; color: var(--saffron); border-top: 1px dashed var(--line); padding-top: 8px; }
+pre.mail { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 16px 18px; font-family: var(--mono); font-size: 13px; line-height: 1.55; white-space: pre-wrap; overflow-x: auto; margin: 8px 0 18px; }
+.note { font-size: 14.5px; color: var(--muted); }
+.pending { border: 1px dashed var(--saffron); border-radius: 10px; padding: 14px 16px; color: var(--muted); font-size: 15px; }
+.num { font-variant-numeric: tabular-nums; }
+footer { color: var(--muted); font-size: 13.5px; }
+@media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
+</style>
+
+<div class="wrap">
+  <nav class="toc" aria-label="Sommaire">
+    <ol>
+      <li><a href="#top">ARP Playbook</a></li>
+      <li class="group">Le projet</li>
+      <li><a href="#but">Le but final</a></li>
+      <li><a href="#bref">En bref</a></li>
+      <li><a href="#marche">Le marché</a></li>
+      <li><a href="#positionnement">Positionnement</a></li>
+      <li class="group">Démarrer</li>
+      <li><a href="#allies">Sur qui s'appuyer</a></li>
+      <li><a href="#users">Premiers utilisateurs</a></li>
+      <li><a href="#plan">Plan 90 jours</a></li>
+      <li><a href="#modele">Modèle économique</a></li>
+      <li><a href="#risques">Risques</a></li>
+      <li class="group">Levée de fonds</li>
+      <li><a href="#lignes">Des lignes, pas des points</a></li>
+      <li><a href="#investisseurs">Les 25 investisseurs</a></li>
+      <li><a href="#update">La mise à jour mensuelle</a></li>
+      <li><a href="#intros">Intros et café</a></li>
+      <li><a href="#fonds">Ce que financent les fonds</a></li>
+      <li><a href="#onchain">Le track record on chain</a></li>
+      <li><a href="#sources">Sources</a></li>
+    </ol>
+  </nav>
+
+  <main>
+    <header class="hero" id="top">
+      <svg class="sigil" viewBox="0 0 56 56" role="img" aria-label="Sigle ARP">
+        <circle cx="28" cy="28" r="5" fill="var(--saffron)"/>
+        <g fill="var(--ink)" opacity="0.8">
+          <circle cx="28" cy="15" r="2"/><circle cx="37.2" cy="18.8" r="2"/><circle cx="41" cy="28" r="2"/><circle cx="37.2" cy="37.2" r="2"/>
+          <circle cx="28" cy="41" r="2"/><circle cx="18.8" cy="37.2" r="2"/><circle cx="15" cy="28" r="2"/><circle cx="18.8" cy="18.8" r="2"/>
+        </g>
+        <g fill="var(--muted)" opacity="0.6">
+          <circle cx="28" cy="4" r="1.3"/><circle cx="45" cy="11" r="1.3"/><circle cx="52" cy="28" r="1.3"/><circle cx="45" cy="45" r="1.3"/>
+          <circle cx="28" cy="52" r="1.3"/><circle cx="11" cy="45" r="1.3"/><circle cx="4" cy="28" r="1.3"/><circle cx="11" cy="11" r="1.3"/>
+        </g>
+      </svg>
+      <span class="eyebrow">Agent Reputation Protocol · état au 29 octobre 2026</span>
+      <h1>ARP Playbook</h1>
+      <p>Tout ce qu'il faut pour démarrer ARP : le but, le marché, le positionnement, les premiers utilisateurs, et la préparation de la levée.</p>
+      <blockquote class="pitch">There are 48,000 MCP servers and 1.5 million registered agents, and nobody can tell which tools agents actually use. Stars and installs show who looked; reviews are mostly fake accounts. ARP records what agents really use, each time a call succeeds, on an open graph anyone can read. <strong>Stars show who looked. ARP shows who used it, so agents pick tools that work, and money flows to the tools agents actually depend on.</strong></blockquote>
+    </header>
+
+    <section id="but">
+      <span class="eyebrow">Le but final</span>
+      <h2>Faire circuler l'argent vers les outils que les agents utilisent vraiment</h2>
+      <p class="goal">Mesurer n'a de valeur que si une décision en dépend. ARP sert à <em>choisir</em> un outil, à <em>miser</em> sur son adoption, et au bout du compte à <em>financer</em> ce qui est réellement utilisé.</p>
+      <div class="flow">
+        <div><span class="tag">La donnée</span><b>Mesurer l'usage</b>Le hook enregistre chaque appel réussi, publiquement, sur Intuition.</div>
+        <div><span class="tag">Le moyen</span><b>Choisir un outil</b>L'agent évite les outils morts et les copies. C'est ce qui fait installer le hook.</div>
+        <div><span class="tag">Le moteur</span><b>Miser sur l'adoption</b>Miser tôt sur un outil qui sera utilisé, avec l'usage mesuré comme arbitre.</div>
+        <div class="end"><span class="tag">Le but</span><b>Financer ce qui sert</b>Subventions, rétro funding, puis une part des paiements, répartis selon l'usage réel.</div>
+      </div>
+      <p>La spéculation reste honnête à une condition : être réglée par un résultat que tout le monde peut vérifier. C'est le cas des marchés de prédiction. Une mise libre, sans résultat pour la trancher, refait l'histoire des registres curatés par jetons, qui sont presque tous morts. La vente de la donnée d'usage aux agrégateurs est un revenu dérivé, qui viendra plus tard.</p>
+    </section>
+
+    <section id="bref">
+      <span class="eyebrow">En bref</span>
+      <h2>Le projet en cinq lignes</h2>
+      <ol class="steps">
+        <li><strong>Le problème.</strong> Des dizaines de milliers d'outils, environ la moitié qui ne répondent pas, et aucun signal d'usage réel.</li>
+        <li><strong>La place libre.</strong> Chacun voit une facette ; personne ne garde une trace publique de l'usage réel.</li>
+        <li><strong>La cible d'abord.</strong> Les constructeurs d'agents et les auteurs d'outils MCP et de skills, via Intuition et la communauté ERC-8004.</li>
+        <li><strong>Les premiers utilisateurs.</strong> Un hook gratuit dans les frameworks d'agents, un badge pour les auteurs, des frais subventionnés.</li>
+        <li><strong>L'argent ensuite.</strong> Le badge payé par les éditeurs, le paiement à la requête, puis la donnée d'usage pour les agrégateurs.</li>
+      </ol>
+    </section>
+
+    <section id="marche">
+      <span class="eyebrow">Le marché vu de l'extérieur</span>
+      <h2>Chaque acteur voit une seule facette</h2>
+      <p>Personne ne réunit popularité, disponibilité, paiements et usage déclaré sur une fiche publique et datée. C'est la place d'ARP.</p>
+      <div class="tablebox"><table>
+        <thead><tr><th>Segment</th><th>Qui y est, livré</th><th>Ce qu'il voit</th><th>Modèle</th></tr></thead>
+        <tbody>
+          <tr><td>Annuaires MCP et skills</td><td>Registre MCP officiel, Glama, Smithery (Arcade), skills.sh</td><td>Ce qui existe, installs, notes de qualité</td><td>Gratuit, monétisé par l'hébergement</td></tr>
+          <tr><td>Découverte par le paiement</td><td>Bazaar x402 (Coinbase)</td><td>Appels payés et payeurs uniques sur 30 jours</td><td>Gratuit, sert le rail de paiement</td></tr>
+          <tr><td>Agrégateur multi registres</td><td>HOL Registry Broker</td><td>Agents de 15 registres, disponibilité</td><td>API, en partie à crédits</td></tr>
+          <tr><td>Registres d'entreprise</td><td>AWS, Microsoft, Google</td><td>L'inventaire interne d'une entreprise</td><td>À l'usage ou par siège</td></tr>
+          <tr><td>Sécurité des outils</td><td>Snyk (Invariant), Socket, Runlayer</td><td>Vulnérabilités, code malveillant</td><td>Abonnement entreprise</td></tr>
+          <tr><td>Identité et avis on chain</td><td>ERC-8004, Kleros Scout, Olas, Virtuals</td><td>Qui est enregistré, avis déclarés</td><td>Jetons, frais, subventions</td></tr>
+          <tr><td>Modèles et Spaces</td><td>Hugging Face Hub, Spaces Gradio en MCP</td><td>Téléchargements, likes, mises à jour</td><td>Calcul et abonnements</td></tr>
+        </tbody>
+      </table></div>
+      <ol class="steps">
+        <li><strong>L'offre explose.</strong> Le registre MCP officiel est passé de <span class="num">1 204</span> noms fin 2025 à <span class="num">47 879</span> le 21 octobre 2026. ERC-8004 compte <span class="num">1,57</span> million d'identités.</li>
+        <li><strong>La qualité ne suit pas.</strong> Environ la moitié des serveurs MCP répondent au handshake, et 3 à 15 % des agents ERC-8004 selon la chaîne. Dans ERC-8004, 59 à 91 % des avis viennent de comptes sybil.</li>
+        <li><strong>Personne ne publie d'historique.</strong> Chaque source montre l'état du moment ; aucune ne garde la trace de ce qui a été utilisé, par qui, et si ça a marché.</li>
+      </ol>
+    </section>
+
+    <section id="positionnement">
+      <span class="eyebrow">Positionnement</span>
+      <h2>Proof of use, la preuve d'usage</h2>
+      <p>Le mot « registre » ne distingue plus rien, et « réputation » sonne comme une note de plus. ARP se présente comme la preuve d'usage : une étoile dit qui a regardé, ARP montre qui s'en est servi et si ça a marché.</p>
+      <p><strong>Le périmètre.</strong> ARP indexe ce qu'un agent peut appeler : serveurs MCP, skills, agents ERC-8004, endpoints x402, Spaces Hugging Face en MCP. GitHub, npm, Hugging Face, le Bazaar et HOL deviennent des colonnes de la fiche, pas des périmètres.</p>
+      <div class="tablebox"><table>
+        <thead><tr><th>Ce qui existe</th><th>Ce que ça dit</th><th>Ce qu'ARP ajoute</th></tr></thead>
+        <tbody>
+          <tr><td>Étoiles, installs</td><td>Quelqu'un a regardé ou installé</td><td>Un agent l'a appelé, et l'appel a marché</td></tr>
+          <tr><td>Registres, annuaires</td><td>L'outil existe</td><td>Il est utilisé, par combien d'agents distincts</td></tr>
+          <tr><td>Avis et notes</td><td>Quelqu'un a donné son avis</td><td>Un usage réel, signé et daté</td></tr>
+          <tr><td>Tableaux de bord privés</td><td>L'état du moment, chez un fournisseur</td><td>Un historique public que personne ne peut réécrire</td></tr>
+        </tbody>
+      </table></div>
+      <h3>Un message par public</h3>
+      <div class="tablebox"><table>
+        <thead><tr><th>Public</th><th>Message</th><th>Ce qu'il obtient</th></tr></thead>
+        <tbody>
+          <tr><td>Constructeurs d'agents</td><td><em>Pick tools other agents actually use.</em></td><td>Une vérification avant chaque choix, gratuite</td></tr>
+          <tr><td>Auteurs d'outils</td><td><em>Prove your tool is used, not just installed.</em></td><td>Un badge qui distingue l'original des copies</td></tr>
+          <tr><td>Registres, agrégateurs</td><td><em>Add a usage column you don't have to build.</em></td><td>Une source de données ouverte</td></tr>
+          <tr><td>Écosystème Intuition</td><td><em>The first live use case for agents on the graph.</em></td><td>Du trafic réel d'agents qui écrivent des triples</td></tr>
+          <tr><td>Financeurs</td><td><em>Fund what agents depend on.</em></td><td>Une répartition fondée sur l'usage réel</td></tr>
+        </tbody>
+      </table></div>
+    </section>
+
+    <section id="allies">
+      <span class="eyebrow">Sur qui s'appuyer</span>
+      <h2>Intuition et la communauté ERC-8004 d'abord</h2>
+      <p>Tu as déjà une subvention Intuition avec Sofia, et la réputation d'ERC-8004 est vide et envahie de faux comptes. La plupart des gros programmes de subventions sont fermés en ce moment.</p>
+      <h3>Financement non dilutif</h3>
+      <div class="tablebox"><table>
+        <thead><tr><th>Programme</th><th>État au 29 oct.</th><th>Montant</th><th>Action</th></tr></thead>
+        <tbody>
+          <tr><td><a href="https://atlas.discourse.group/c/ecosystem-development/grant-applications/36">Intuition, forum Atlas</a></td><td>Ouvert en continu</td><td>Cohorte 1 : 100k USDT pour 9 équipes</td><td>Poster maintenant, avec des jalons chiffrés</td></tr>
+          <tr><td><a href="https://docs.base.org/get-started/get-funded">Base Builder Grants</a></td><td>Sur sélection, sans formulaire</td><td>1 à 5 ETH</td><td>Livrer en public sur Base</td></tr>
+          <tr><td><a href="https://www.base.org/batches">Base Batches</a></td><td>004 fermé ; 005 vers fév. ou mars 2027, non confirmé</td><td>100k $</td><td>Préparer le dossier</td></tr>
+          <tr><td><a href="https://esp.ethereum.foundation/applicants">Ethereum Foundation</a></td><td>Appels à projets seulement</td><td>Variable</td><td>Réserver des Office Hours</td></tr>
+          <tr><td><a href="https://www.legalstart.fr/fiches-pratiques/aides-creation-entreprise/bourse-french-tech/">Bourse French Tech</a></td><td>Ouvert ; micro entreprise à confirmer</td><td>Jusqu'à 30 k€</td><td>Appeler Bpifrance Marseille</td></tr>
+        </tbody>
+      </table></div>
+      <h3>Partenaires de données et communautés</h3>
+      <div class="tablebox"><table>
+        <thead><tr><th>Qui</th><th>Ce que tu leur apportes</th></tr></thead>
+        <tbody>
+          <tr><td>Auteurs d'ERC-8004 (<a href="https://www.8004.org/">8004.org</a>, <a href="https://t.me/ERC8004">Telegram</a>)</td><td>Un signal d'usage réel au lieu d'avis gratuits</td></tr>
+          <tr><td><a href="https://8004scan.io/">8004scan</a> (AltLayer)</td><td>Un profil « usage d'outil » dans leurs conventions de données</td></tr>
+          <tr><td><a href="https://modelcontextprotocol.io/registry/registry-aggregators">Registre MCP officiel</a></td><td>Une colonne d'usage via le champ <code>_meta</code></td></tr>
+          <tr><td><a href="https://hol.org/registry/docs">HOL Registry Broker</a></td><td>Un adaptateur qui leur fournit l'usage ARP</td></tr>
+          <tr><td>Projets voisins sur Intuition (AgentId, AgentWitness)</td><td>S'intégrer plutôt que se concurrencer</td></tr>
+          <tr><td>ElizaOS, Lucid Agents SDK de Daydreams</td><td>Un plugin : le hook arrive chez tous leurs agents</td></tr>
+        </tbody>
+      </table></div>
+      <h3>Événements</h3>
+      <div class="tablebox"><table>
+        <thead><tr><th>Date</th><th>Événement</th><th>Intérêt</th></tr></thead>
+        <tbody>
+          <tr><td class="num">3 au 6 nov. 2026</td><td>Devcon 8, Mumbai</td><td>Espace agents proposé, non confirmé</td></tr>
+          <tr><td class="num">12 au 15 avr. 2027</td><td>EthCC, Cannes</td><td>À deux heures de Marseille : la démo</td></tr>
+          <tr><td class="num">28 au 30 mai 2027</td><td>ETHPrague</td><td>Hackathon Ethereum et IA</td></tr>
+          <tr><td class="num">16 au 19 juin 2027</td><td>VivaTech, Paris</td><td>Visibilité en France</td></tr>
+        </tbody>
+      </table></div>
+    </section>
+
+    <section id="users">
+      <span class="eyebrow">Premiers utilisateurs</span>
+      <h2>Commencer là où tu es déjà connu</h2>
+      <div class="tablebox"><table>
+        <thead><tr><th>Cercle</th><th>Qui exactement</th><th>Offre d'entrée</th></tr></thead>
+        <tbody>
+          <tr><td>Proches</td><td>Testeurs alpha de Sofia, équipes financées par Intuition</td><td>Le hook installé avec toi, frais payés par ARP</td></tr>
+          <tr><td>Opérateurs d'agents</td><td>centralcity.ai et les opérateurs de la marketplace Olas, qui dominent tes échantillons Base</td><td>Import gratuit et badge « used by N agents »</td></tr>
+          <tr><td>Auteurs d'outils</td><td>Auteurs de skills copiés (dont obra/superpowers), serveurs MCP populaires</td><td>Une page original face aux copies, avec le badge</td></tr>
+          <tr><td>Frameworks</td><td>ElizaOS, Daydreams</td><td>Le hook en une ligne de configuration</td></tr>
+          <tr><td>Communauté</td><td>Lecteurs du fil ERC-8004 et de 8004scan</td><td>Un rapport public chaque semaine</td></tr>
+        </tbody>
+      </table></div>
+      <p class="note">Trois précédents : DefiLlama laisse chaque projet soumettre son adaptateur, shields.io s'est répandu par les badges, mcp.so a ouvert huit jours après MCP.</p>
+    </section>
+
+    <section id="plan">
+      <span class="eyebrow">Plan 90 jours</span>
+      <h2>De zéro à cent agents qui ne t'appartiennent pas</h2>
+      <div class="phases">
+        <div class="phase"><span class="when">Novembre 2026</span><h3>Semer</h3>
+          <ul><li>Subvention Intuition postée</li><li>Hook gratuit et badge livrés</li><li>10 proches avec le hook</li><li>Message aux opérateurs</li></ul>
+          <span class="gate">Porte : 10 agents tiers déclarent</span></div>
+        <div class="phase"><span class="when">Décembre 2026</span><h3>Brancher</h3>
+          <ul><li>Plugins ElizaOS et Daydreams</li><li>Registre MCP et Spaces HF</li><li>Adaptateur proposé à HOL</li><li>Rapport hebdo publié</li></ul>
+          <span class="gate">Porte : 100 agents distincts</span></div>
+        <div class="phase"><span class="when">Janvier 2027</span><h3>Prouver</h3>
+          <ul><li>Test du badge à 1 €</li><li>Profil d'usage chez 8004scan</li><li>Bilan go ou pivot</li><li>Démo prévue pour EthCC</li></ul>
+          <span class="gate">Indicateur : déclarations hebdo hors fondateur</span></div>
+      </div>
+      <p>Si la première porte n'est pas franchie fin novembre, on ne passe pas aux intégrations : on retourne voir les proches pour comprendre ce qui bloque.</p>
+    </section>
+
+    <section id="modele">
+      <span class="eyebrow">Modèle économique</span>
+      <h2>D'abord la preuve, ensuite le revenu</h2>
+      <div class="tablebox"><table>
+        <thead><tr><th>Phase</th><th>Source d'argent</th><th>Ce qu'elle prouve</th></tr></thead>
+        <tbody>
+          <tr><td>Mois 1 à 3</td><td>Subventions d'écosystème, frais de déclaration subventionnés</td><td>Que l'usage existe</td></tr>
+          <tr><td>Mois 3 à 6</td><td>Badge payé par l'éditeur, autour de 1 € par agent et par mois</td><td>Qu'un éditeur paie pour être visible</td></tr>
+          <tr><td>Mois 3 à 6</td><td>Paiement à la requête en x402, quelques centimes</td><td>Qu'un agent paie pour décider</td></tr>
+          <tr><td>Au delà</td><td>Répartition de financements selon l'usage ; licence de données</td><td>Que l'argent suit l'usage réel</td></tr>
+        </tbody>
+      </table></div>
+      <p><strong>Accélérer si :</strong> des déclarations d'adresses inconnues chaque semaine, un éditeur qui paie le badge sans relance, un agrégateur qui demande la donnée.</p>
+      <p><strong>Arrêter ou pivoter si :</strong> après 90 jours, plus de 90 % des déclarations viennent de tes agents, ou aucun éditeur ne paie même 1 €.</p>
+    </section>
+
+    <section id="risques">
+      <span class="eyebrow">Risques</span>
+      <h2>Le vrai risque : une trace que toi seul alimentes</h2>
+      <div class="tablebox"><table>
+        <thead><tr><th>Risque</th><th>Indicateur</th><th>Parade</th></tr></thead>
+        <tbody>
+          <tr><td>Personne ne déclare</td><td>Part des déclarations hors fondateur</td><td>Hook gratuit, frais subventionnés, badge</td></tr>
+          <tr><td>Usage gonflé</td><td>Agents distincts par opérateur</td><td>Compter les agents distincts et leur retour, pas les appels</td></tr>
+          <tr><td>Coût on chain</td><td>Frais TRUST par semaine</td><td>Une position au premier usage, puis une mise à jour hebdo</td></tr>
+          <tr><td>Un gros acteur copie</td><td>Annonces des agrégateurs</td><td>Être leur source ; l'historique on chain ne se copie pas</td></tr>
+          <tr><td>Sources tierces</td><td>Erreurs d'ingestion</td><td>Cache, conditions d'utilisation, citer chaque source</td></tr>
+          <tr><td>Fondateur seul</td><td>Heures par semaine sur ARP</td><td>Un objectif et un indicateur par semaine</td></tr>
+        </tbody>
+      </table></div>
+    </section>
+
+    <section id="lignes">
+      <span class="eyebrow">Levée · 1</span>
+      <h2>Des lignes, pas des points</h2>
+      <p>Un investisseur qui te rencontre une fois voit un point. Celui qui te suit six mois voit une ligne : ce que tu avais annoncé, ce que tu as livré, et à quelle vitesse. La formule vient de Mark Suster. La levée commence donc maintenant, six mois avant la demande d'argent.</p>
+      <div class="tablebox"><table>
+        <thead><tr><th>Mois</th><th>Annoncé</th><th>Preuve</th></tr></thead>
+        <tbody>
+          <tr><td>Nov. 2026</td><td>Hook et badge ; 10 proches ; subvention postée</td><td>Post Atlas, adresses, release</td></tr>
+          <tr><td>Déc. 2026</td><td>Plugins ; sous registre MCP ; HOL ; rapport hebdo</td><td>Plugins publiés, issue HOL</td></tr>
+          <tr><td>Janv. 2027</td><td>Badge à 1 € ; 8004scan ; bilan</td><td>Éditeurs payants, issue 8004scan</td></tr>
+          <tr><td>Févr. 2027</td><td>Base Batches 005 si ouvert ; licences de données</td><td>Dossier, agrégateurs en discussion</td></tr>
+          <tr><td>Mars 2027</td><td>Démo EthCC ; liste d'investisseurs à jour</td><td>Démo enregistrée</td></tr>
+          <tr><td>Avr. 2027</td><td>EthCC : démo publique, premiers rendez vous</td><td>Six mises à jour envoyées</td></tr>
+        </tbody>
+      </table></div>
+      <p>Trois chiffres, toujours les mêmes : agents distincts qui déclarent, déclarations par semaine, outils avec au moins un usage réussi. Tous hors adresses du fondateur.</p>
+    </section>
+
+    <section id="investisseurs">
+      <span class="eyebrow">Levée · 2</span>
+      <h2>Les 25 investisseurs, avec un chemin vers chacun</h2>
+      <div class="pending">Recherche en cours sur les fonds et les investissements récents. La liste arrive dans la prochaine version de cette page, avec pour chaque nom : pourquoi il colle à ARP, son dernier investissement comparable, et qui peut te présenter.</div>
+    </section>
+
+    <section id="update">
+      <span class="eyebrow">Levée · 3</span>
+      <h2>La mise à jour mensuelle</h2>
+      <p>Le même jour chaque mois, au même format, à ceux qui ont accepté. Deux minutes de lecture. On demande la permission avant d'ajouter quelqu'un.</p>
+<pre class="mail">Subject: ARP update #{n}, {Month Year}: {one-line headline}
+
+Hi {first name},
+
+TL;DR. {The most important thing this month.}
+
+The line (recomputable from Intuition, query linked below)
+  Distinct agents declaring (excl. mine)   {a} → {b}
+  Declarations per week (excl. mine)       {c} → {d}
+  Tools with a successful use              {e} → {f}
+
+What I said I'd do last month
+  1. {commitment}: done, {link}
+  2. {commitment}: done, {link}
+  3. {commitment}: not done, {why}
+
+What I learned. {One lesson, ideally a user surprise.}
+
+Next month I will
+  1. {commitment}  2. {commitment}  3. {commitment}
+
+One ask. {A specific intro, or "none this month".}
+
+Query and raw data: {link}
+Maxime</pre>
+      <p class="note">Envoyer même quand le mois est mauvais : le silence se lit comme un échec, un mauvais mois expliqué se lit comme de la maturité.</p>
+    </section>
+
+    <section id="intros">
+      <span class="eyebrow">Levée · 4</span>
+      <h2>Intros chaleureuses et café sans demande</h2>
+      <p>On envoie au connecteur un texte court qu'il peut transférer tel quel, et il demande d'abord à l'investisseur s'il accepte.</p>
+<pre class="mail">Maxime (co-founder of Sofia, Intuition grantee) is building ARP:
+a public record of which tools AI agents actually use. Stars and
+installs show who looked; ARP shows who used it, on an open graph
+anyone can verify. {Traction line.} He's not raising yet and would
+value {investor}'s view on {topic they know}.</pre>
+      <ol class="steps">
+        <li><strong>Avant :</strong> lire ses deux derniers investissements et son dernier texte publié.</li>
+        <li><strong>Pendant, 20 minutes :</strong> deux minutes sur ARP sans deck, ses questions, puis trois des tiennes. Qu'est ce qui te ferait prendre ARP au sérieux dans six mois ? Quel chiffre regardes tu en premier ? Qui d'autre devrait voir ça ?</li>
+        <li><strong>La seule demande :</strong> « Je peux t'ajouter à ma mise à jour mensuelle ? »</li>
+        <li><strong>Après, sous 24 heures :</strong> un merci qui reprend son point précis, et l'engagement de revenir dessus dans la prochaine mise à jour.</li>
+      </ol>
+    </section>
+
+    <section id="fonds">
+      <span class="eyebrow">Levée · 5</span>
+      <h2>Ce que financent les fonds : agents, InfoFi, données ouvertes</h2>
+      <div class="pending">Recherche en cours sur les tours de 2025 et 2026 dans ces trois thèmes, et sur les thèses publiées par les fonds. Cette section sera remplie avec les tours, les montants et les fonds qui reviennent le plus souvent.</div>
+    </section>
+
+    <section id="onchain">
+      <span class="eyebrow">Levée · 6</span>
+      <h2>Le track record on chain</h2>
+      <p>Construire sur Intuition rend la ligne de traction publique et recalculable. L'investisseur n'a pas à croire tes chiffres : il les refait lui même depuis le graphe.</p>
+      <ol class="steps">
+        <li><strong>Publier tes propres adresses</strong> (attesteur, agents de test) pour qu'on puisse les exclure.</li>
+        <li><strong>Publier la requête exacte</strong> qui produit les chiffres, avec la date de chaque exécution.</li>
+        <li><strong>Garder un instantané mensuel,</strong> pour que la courbe existe même si l'indexeur change.</li>
+        <li><strong>Regrouper les agents par opérateur,</strong> pour qu'un opérateur à cent agents ne compte pas pour cent.</li>
+      </ol>
+      <blockquote class="pitch">Every number in my updates is recomputable from the Intuition graph with the query in the repo. I publish my own addresses so you can exclude them. <strong>You don't have to trust my dashboard.</strong></blockquote>
+      <p class="note">Une ligne on chain prouve l'activité, pas la valeur. Elle se lit avec le retour des agents dans le temps et les éditeurs qui paient.</p>
+    </section>
+
+    <section id="sources">
+      <span class="eyebrow">Sources</span>
+      <h2>D'où viennent les chiffres</h2>
+      <p>Les chiffres détaillés, avec leurs liens et la date de lecture (29 octobre 2026), sont dans le dépôt <a href="https://github.com/Wieedze/ARP-business-dev">Wieedze/ARP-business-dev</a>, fichier <code>research/market-gap-report.md</code> et dossier <code>research/notes/</code>. Principales sources : <a href="https://arxiv.org/abs/2606.26028">arXiv 2606.26028</a> sur ERC-8004, <a href="https://docs.cdp.coinbase.com/x402/bazaar">Coinbase CDP Bazaar</a>, <a href="https://hol.org/docs/registry-broker/search">HOL Registry Broker</a>, <a href="https://modelcontextprotocol.io/registry/registry-aggregators">registre MCP officiel</a>.</p>
+      <footer>ARP Playbook · version du 29 octobre 2026</footer>
+    </section>
+  </main>
+</div>

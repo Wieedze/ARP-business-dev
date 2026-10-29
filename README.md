@@ -4,7 +4,7 @@ Private workspace for ARP's market research, positioning and go-to-market. The p
 
 ## Elevator pitch
 
-> There are 48,000 MCP servers and 1.5 million registered agents, and nobody can tell which tools agents actually use. Stars and installs show who looked; reviews are mostly fake accounts. ARP records what agents really use, each time a call succeeds, on an open graph anyone can read, next to every other signal. **Stars show who looked. ARP shows who used it.**
+> There are 48,000 MCP servers and 1.5 million registered agents, and nobody can tell which tools agents actually use. Stars and installs show who looked; reviews are mostly fake accounts. ARP records what agents really use, each time a call succeeds, on an open graph anyone can read, next to every other signal. **Stars show who looked. ARP shows who used it, so agents pick tools that work, and money flows to the tools agents actually depend on.**
 
 ## Contents
 
