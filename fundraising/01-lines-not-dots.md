@@ -8,12 +8,12 @@ Conséquence pratique : la levée commence maintenant, six mois avant la demande
 
 | Mois | Ce que tu annonces au début du mois | Ce qui prouve que c'est fait |
 | --- | --- | --- |
-| Nov. 2026 | Hook gratuit et badge livrés ; 10 proches installés ; demande de subvention Intuition postée | Lien du post Atlas ; adresses des 10 agents ; commit de release |
-| Déc. 2026 | Plugins ElizaOS et Daydreams ; sous registre MCP ; adaptateur proposé à HOL ; premier rapport hebdo | Liens des plugins publiés ; lien de l'issue HOL ; rapport en ligne |
-| Janv. 2027 | Test du badge à 1 € ; profil d'usage chez 8004scan ; bilan go ou pivot | Nombre d'éditeurs payants ; lien de l'issue 8004scan |
-| Févr. 2027 | Candidature Base Batches 005 si elle ouvre ; premières licences de données discutées | Dossier envoyé ; noms des agrégateurs en discussion |
-| Mars 2027 | Préparation de la démo EthCC ; liste des 25 investisseurs à jour | Démo enregistrée |
-| Avr. 2027 | EthCC, Cannes : démo publique, premiers rendez vous de levée | Six mises à jour envoyées, chacune avec ses chiffres |
+| Nov. 2026 | Hook gratuit, badge et page publique livrés ; demande de subvention Intuition postée | Lien du post Atlas ; commit de release |
+| Déc. 2026 | 10 proches installés ; opérateurs contactés ; premier rapport public | Adresses des agents ; rapport en ligne |
+| Janv. 2027 | Porte 1 franchie ; plugins ElizaOS et Daydreams | Liens des plugins publiés |
+| Févr. 2027 | Sous registre MCP ; adaptateur HOL ; porte 2 ; Base Batches 005 si elle ouvre | Lien de l'issue HOL ; dossier envoyé |
+| Mars 2027 | Test du badge à 1 € ; profil d'usage chez 8004scan ; démo EthCC prête | Nombre d'éditeurs payants ; démo enregistrée |
+| Avr. 2027 | EthCC, Cannes : démo publique, premiers rendez vous de levée | Cinq mises à jour envoyées, chacune avec ses chiffres |
 
 ## Les trois chiffres de la ligne
 

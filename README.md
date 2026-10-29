@@ -10,8 +10,8 @@ Private workspace for ARP's market research, positioning and go-to-market. The p
 
 | Path | What it holds |
 | --- | --- |
-| `plan/plan-de-demarrage.md` | Startup plan: market, positioning, allies, first users, 90 day plan, business model, risks (French) |
-| `plan/next-steps.md` | The 90 day plan as a checklist |
+| `plan/plan-de-demarrage.md` | Startup plan: market, positioning, allies, first users, plan to EthCC, business model, risks (French) |
+| `plan/next-steps.md` | The plan to EthCC (Nov 2026 to Mar 2027) as a checklist |
 | `research/market-gap-report.md` | Market report: competitors, who pays, demand, failures of past reputation systems (English, sourced, read 2026-10-29) |
 | `research/notes/` | Raw research notes behind the report and the plan, every figure with its URL |
 

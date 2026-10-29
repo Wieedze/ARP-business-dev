@@ -4,7 +4,7 @@
 
 ## En bref
 
-ARP devient la preuve d'usage des outils d'agents : un enregistrement public de ce que les agents utilisent vraiment, à côté des étoiles, installs, disponibilité et paiements. Objectif à 90 jours : des agents qu'on ne connaît pas qui déclarent leurs outils chaque semaine.
+ARP devient la preuve d'usage des outils d'agents : un enregistrement public de ce que les agents utilisent vraiment, à côté des étoiles, installs, disponibilité et paiements. Objectif d'ici fin février 2027 : des agents qu'on ne connaît pas qui déclarent leurs outils chaque semaine.
 
 **Elevator pitch**
 
@@ -125,36 +125,37 @@ Les dix premiers utilisateurs se trouvent là où tu es déjà connu : l'écosys
 2. **shields.io** s'est répandu par les badges dans les README : chaque projet qui l'affiche fait sa promotion.
 3. **mcp.so** a ouvert huit jours après le lancement de MCP : arriver tôt sur un standard neuf compte plus que la perfection.
 
-## Plan 90 jours
+## Plan jusqu'à EthCC
 
-En trois mois, ARP doit passer de zéro à cent agents distincts qui déclarent leurs outils, dont la majorité ne t'appartient pas. Chaque phase s'ouvre seulement si la porte précédente est franchie. Le détail en liste est dans `plan/next-steps.md`.
+D'ici fin février 2027, ARP doit passer de zéro à cent agents distincts qui déclarent leurs outils, dont la majorité ne t'appartient pas. Novembre sert à construire ; les portes se comptent à partir de la mise en ligne du hook, pas du calendrier. Le détail en liste est dans `plan/next-steps.md`.
 
 | Phase | Livrables | Porte de sortie |
 | --- | --- | --- |
-| Mois 1 : semer (novembre 2026) | Subvention Intuition postée ; hook gratuit et badge livrés ; 10 proches avec le hook ; message aux opérateurs | 10 agents tiers déclarent |
-| Mois 2 : brancher (décembre 2026) | Plugin ElizaOS et Daydreams ; registre MCP et Spaces HF ; adaptateur proposé à HOL ; rapport hebdo publié | 100 agents distincts |
-| Mois 3 : prouver (janvier 2027) | Test du badge à 1 € ; profil d'usage 8004scan ; bilan go ou pivot ; démo prévue pour EthCC | |
+| Construire (novembre 2026) | Hook gratuit et badge ; page publique des fiches ; subvention Intuition postée ; appel à Bpifrance | |
+| Semer (déc. 2026 à mi janv. 2027) | 10 proches avec le hook ; message aux opérateurs ; premier rapport public ; hackathon ETHGlobal si possible | 10 agents tiers, six semaines après la mise en ligne |
+| Brancher (mi janv. à fin févr. 2027) | Plugins ElizaOS et Daydreams ; registre MCP et Spaces HF ; adaptateur proposé à HOL ; rapport hebdo | 100 agents distincts |
+| Prouver (mars 2027) | Test du badge à 1 € ; profil d'usage 8004scan ; bilan go ou pivot ; démo pour EthCC, avril 2027 | |
 
 Indicateur principal : déclarations par semaine venant d'adresses que tu ne contrôles pas.
 
-Si la première porte n'est pas franchie fin novembre, on ne passe pas aux intégrations : on retourne voir les dix proches pour comprendre ce qui bloque.
+Si la première porte n'est pas franchie six semaines après la mise en ligne, on ne passe pas aux intégrations : on retourne voir les dix proches pour comprendre ce qui bloque. Un levier qui prend (un framework qui intègre le hook, un rapport qui circule, un hackathon) peut faire franchir la porte plus tôt, mais le plan ne compte pas dessus.
 
 ## Modèle économique
 
-Pendant les 90 premiers jours, ARP ne cherche pas de revenu : il cherche la preuve que des agents qu'on ne connaît pas s'en servent. L'argent vient des subventions, puis de tests de prix volontairement petits.
+Jusqu'à fin février 2027, ARP ne cherche pas de revenu : il cherche la preuve que des agents qu'on ne connaît pas s'en servent. L'argent vient des subventions, puis de tests de prix volontairement petits.
 
 | Phase | Source d'argent | Ce qu'elle prouve |
 | --- | --- | --- |
-| Mois 1 à 3 | Subventions d'écosystème (Intuition d'abord), frais de déclaration subventionnés | Que l'usage existe |
-| Mois 3 à 6 | Badge « vérifié » ou mise en avant payée par l'auteur d'un outil ou l'opérateur d'agents, autour de 1 € par agent et par mois | Qu'un éditeur paie pour être visible |
-| Mois 3 à 6 | Paiement à la requête en x402 pour l'API, quelques centimes par vérification | Qu'un agent paie lui même pour décider |
+| Nov. 2026 à févr. 2027 | Subventions d'écosystème (Intuition d'abord), frais de déclaration subventionnés | Que l'usage existe |
+| Mars à juin 2027 | Badge « vérifié » ou mise en avant payée par l'auteur d'un outil ou l'opérateur d'agents, autour de 1 € par agent et par mois | Qu'un éditeur paie pour être visible |
+| Mars à juin 2027 | Paiement à la requête en x402 pour l'API, quelques centimes par vérification | Qu'un agent paie lui même pour décider |
 | Au delà | Licence des données d'usage aux agrégateurs et aux registres d'entreprise | Que les gardiens paient la donnée |
 
 Le précédent le plus proche est celui des sites d'avis : c'est l'entreprise notée qui paie pour sa visibilité, pas le lecteur. Trustpilot a déclaré 261 M$ de revenus en 2025 sur ce modèle.
 
 **Signaux d'accélération :** des déclarations d'adresses que tu ne contrôles pas chaque semaine, un premier éditeur qui paie le badge sans relance, un agrégateur qui demande l'accès aux données.
 
-**Signaux d'arrêt ou de pivot :** après 90 jours, plus de 90 % des déclarations viennent de tes propres agents, ou aucun éditeur ne paie même 1 € après avoir vu son badge.
+**Signaux d'arrêt ou de pivot :** fin février 2027, plus de 90 % des déclarations viennent de tes propres agents, ou aucun éditeur ne paie même 1 € après avoir vu son badge.
 
 ## Risques
 
