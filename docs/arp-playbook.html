@@ -324,7 +324,42 @@ footer { color: var(--muted); font-size: 13.5px; }
     <section id="investisseurs">
       <span class="eyebrow">Levée · 2</span>
       <h2>Les 25 investisseurs, avec un chemin vers chacun</h2>
-      <div class="pending">Recherche en cours sur les fonds et les investissements récents. La liste arrive dans la prochaine version de cette page, avec pour chaque nom : pourquoi il colle à ARP, son dernier investissement comparable, et qui peut te présenter.</div>
+      <p>Quatre cercles, du plus chaud au plus froid. On ne demande pas d'argent avant avril 2027 : d'abord un café, puis l'accord pour la mise à jour mensuelle.</p>
+      <div class="tablebox"><table>
+        <thead><tr><th>#</th><th>Investisseur</th><th>Pourquoi ARP</th><th>Chemin d'entrée</th></tr></thead>
+        <tbody>
+          <tr><td colspan="4" class="eyebrow">Cercle 1 · les investisseurs d'Intuition</td></tr>
+          <tr><td class="num">1</td><td>Superscrypt</td><td>A mené le seed d'Intuition et la série A de Kaito</td><td>Équipe Intuition, via Sofia</td></tr>
+          <tr><td class="num">2</td><td>Shima Capital</td><td>Seed d'Intuition</td><td>Équipe Intuition</td></tr>
+          <tr><td class="num">3</td><td>Joseph Lubin, ConsenSys</td><td>A co-mené le premier tour d'Intuition</td><td>Équipe Intuition ; EthCC</td></tr>
+          <tr><td class="num">4</td><td>Andrew Keys, DARMA</td><td>A co-mené le premier tour d'Intuition</td><td>Équipe Intuition</td></tr>
+          <tr><td class="num">5</td><td>Polygon Ventures</td><td>Intuition et Billions (identité)</td><td>Équipe Intuition</td></tr>
+          <tr><td class="num">6</td><td>F-Prime (Fidelity)</td><td>Entré dans Intuition au mainnet</td><td>Équipe Intuition</td></tr>
+          <tr><td class="num">7</td><td>Jonathan Christodoro</td><td>Angel d'Intuition, profil paiements</td><td>Équipe Intuition</td></tr>
+          <tr><td colspan="4" class="eyebrow">Cercle 2 · la thèse décrit le trou d'ARP</td></tr>
+          <tr><td class="num">8</td><td>USV</td><td>A écrit que la découverte et la confiance des agents manquent</td><td>Réponse au <a href="https://www.usv.com/writing/recall-skill-markets-for-ai">billet sur Recall</a></td></tr>
+          <tr><td class="num">9</td><td>Multicoin</td><td>Thèse réputation de Recall</td><td>Équipe Recall</td></tr>
+          <tr><td class="num">10</td><td>Placeholder</td><td>Investisseur de Recall</td><td>Équipe Recall</td></tr>
+          <tr><td class="num">11</td><td>CoinFund</td><td>Recall, Irys (provenance)</td><td>Équipe Recall</td></tr>
+          <tr><td class="num">12</td><td>a16z crypto, CSX</td><td>Thèse « Know Your Agent » ; CSX à 500k $</td><td>Candidature CSX</td></tr>
+          <tr><td class="num">13</td><td>Coinbase Ventures, Base Fund</td><td>Le plus actif autour de x402 ; Intuition est sur Base</td><td>Livrer en public sur Base</td></tr>
+          <tr><td class="num">14</td><td>Variant</td><td>Nouveau fonds de 222 M$ sur l'autonomie</td><td>Événements, mises à jour</td></tr>
+          <tr><td class="num">15</td><td>Framework</td><td>Nouveau fonds de 400 M$ crypto et IA</td><td>Événements</td></tr>
+          <tr><td class="num">16</td><td>1kx</td><td>A mené Olas, registre d'agents</td><td>Opérateurs Olas</td></tr>
+          <tr><td class="num">17</td><td>Polychain</td><td>Billions, Talus, OpenLedger</td><td>Événements</td></tr>
+          <tr><td class="num">18</td><td>Dragonfly</td><td>Kaito seed, Sapiom série A</td><td>Événements</td></tr>
+          <tr><td class="num">19</td><td>Paradigm</td><td>A mené Noise, InfoFi sur Base</td><td>Événements</td></tr>
+          <tr><td colspan="4" class="eyebrow">Cercle 3 · premier chèque, fondateur seul</td></tr>
+          <tr><td class="num">20</td><td>Alliance DAO</td><td>400k $ à 4 M$ post money</td><td>Candidature ; date limite 18 nov. 2026</td></tr>
+          <tr><td colspan="4" class="eyebrow">Cercle 4 · France et Europe</td></tr>
+          <tr><td class="num">21</td><td>Kima Ventures</td><td>Rapide, 100 à 200k $ ; dans Alpic (MCP)</td><td>Candidature ; fondateurs d'Alpic</td></tr>
+          <tr><td class="num">22</td><td>Galion.exe</td><td>Collectif de fondateurs ; dans Alpic</td><td>Fondateurs d'Alpic</td></tr>
+          <tr><td class="num">23</td><td>Partech</td><td>A mené le pre-seed d'Alpic</td><td>Fondateurs d'Alpic</td></tr>
+          <tr><td class="num">24</td><td>Frst</td><td>Seed français, infra crypto (OnlyDust)</td><td>Communauté OnlyDust</td></tr>
+          <tr><td class="num">25</td><td>Fabric Ventures</td><td>« Machine economy » ; résidence à 300k $</td><td>Candidature au programme</td></tr>
+        </tbody>
+      </table></div>
+      <p class="note">En réserve, des angels opérateurs : Sandeep Nailwal, Yu Hu (Kaito), David Minarsch (Olas), Thomas Wolf (Hugging Face). Reste à faire : trouver la personne qui suit les agents dans chaque fonds, et le nom de chaque connecteur. Sources dans <code>fundraising/02-investor-list.md</code>.</p>
     </section>
 
     <section id="update">
@@ -379,7 +414,30 @@ value {investor}'s view on {topic they know}.</pre>
     <section id="fonds">
       <span class="eyebrow">Levée · 5</span>
       <h2>Ce que financent les fonds : agents, InfoFi, données ouvertes</h2>
-      <div class="pending">Recherche en cours sur les tours de 2025 et 2026 dans ces trois thèmes, et sur les thèses publiées par les fonds. Cette section sera remplie avec les tours, les montants et les fonds qui reviennent le plus souvent.</div>
+      <p>L'argent de l'infrastructure agents va d'abord aux paiements et à l'identité, puis à l'outillage MCP. Les registres et couches de réputation n'ont presque rien levé de public : la place est libre, et aucun fonds n'a encore validé ce modèle avec un gros chèque.</p>
+      <div class="tablebox"><table>
+        <thead><tr><th>Entreprise</th><th>Tour</th><th>Mené par</th><th>Thème</th></tr></thead>
+        <tbody>
+          <tr><td>Sapiom</td><td class="num">35 M$ série A</td><td>Dragonfly</td><td>Agents, accès payant</td></tr>
+          <tr><td>Composio</td><td class="num">25 M$ série A</td><td>Lightspeed</td><td>Agents, outils</td></tr>
+          <tr><td>Catena Labs</td><td class="num">18 M$ seed</td><td>a16z crypto</td><td>Agents, identité</td></tr>
+          <tr><td>Olas</td><td class="num">13,8 M$</td><td>1kx</td><td>Agents, registre</td></tr>
+          <tr><td>Runlayer</td><td class="num">11 M$ seed</td><td>Khosla, Felicis</td><td>Sécurité MCP</td></tr>
+          <tr><td>Dedalus Labs</td><td class="num">11 M$ seed</td><td>Kindred, Saga</td><td>MCP</td></tr>
+          <tr><td>Alpic (Paris)</td><td class="num">6 M$ pre-seed</td><td>Partech</td><td>MCP</td></tr>
+          <tr><td>Limitless</td><td class="num">10 M$ seed</td><td>1confirmation</td><td>InfoFi, prédiction</td></tr>
+          <tr><td>Noise</td><td class="num">7,1 M$ seed</td><td>Paradigm</td><td>InfoFi, attention</td></tr>
+          <tr><td>Intuition</td><td class="num">8,5 M$ au total</td><td>Superscrypt au seed</td><td>InfoFi, graphe</td></tr>
+          <tr><td>Poseidon (Story)</td><td class="num">15 M$ seed</td><td>a16z crypto</td><td>Données IA</td></tr>
+        </tbody>
+      </table></div>
+      <h3>Comment se ranger sous les thèses existantes</h3>
+      <ol class="steps">
+        <li><strong>a16z, « Know Your Agent » :</strong> <em>KYA tells you who the agent is. ARP tells you what it actually uses.</em></li>
+        <li><strong>USV :</strong> ARP construit la couche de découverte et de confiance qu'ils disent manquer.</li>
+        <li><strong>InfoFi (Paradigm, Superscrypt, Dragonfly) :</strong> un marché sur l'usage réel, qui se vérifie, plutôt que sur l'attention.</li>
+      </ol>
+      <p class="note">Tickets d'entrée : Alliance DAO 400k $, a16z CSX 500k $, résidence Fabric 300k $, Kima 100 à 200k $. Les 49 tours et leurs sources sont dans <code>research/notes/funds_and_deals.md</code>.</p>
     </section>
 
     <section id="onchain">
