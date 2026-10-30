@@ -16,7 +16,7 @@ ARP devient le registre public d'usage des outils d'agents : un enregistrement p
 2. **La place libre.** Chacun voit une facette ; personne ne garde une trace publique de l'usage réel.
 3. **La cible d'abord.** Les constructeurs d'agents et les auteurs d'outils MCP et de skills, via Intuition et la communauté ERC-8004.
 4. **Comment avoir les premiers utilisateurs.** Un hook gratuit dans les frameworks d'agents, un badge pour les auteurs, des frais subventionnés.
-5. **Comment gagner de l'argent ensuite.** Le badge payé par les éditeurs, puis la donnée d'usage pour les agrégateurs.
+5. **Comment gagner de l'argent ensuite.** Les agents paient pour consulter ARP en x402 ; les outils ne paient jamais.
 
 ## Le marché vu de l'extérieur
 
@@ -142,20 +142,21 @@ Si la première porte n'est pas franchie six semaines après la mise en ligne, o
 
 ## Modèle économique
 
-Jusqu'à fin février 2027, ARP ne cherche pas de revenu : il cherche la preuve que des agents qu'on ne connaît pas s'en servent. L'argent vient des subventions, puis de tests de prix volontairement petits.
+Le modèle suit l'ADR `0094` du dépôt ARP : **les agents paient pour consulter, les outils ne paient jamais.** Pendant la phase de lancement, ARP ne cherche pas de revenu : il cherche la preuve que des agents qu'on ne connaît pas s'en servent.
 
-| Phase | Source d'argent | Ce qu'elle prouve |
+| Élément | Comment | Ce que ça prouve |
 | --- | --- | --- |
-| Nov. 2026 à févr. 2027 | Subventions d'écosystème (Intuition d'abord), frais de déclaration subventionnés | Que l'usage existe |
-| Mars à juin 2027 | Badge « vérifié » ou mise en avant payée par l'auteur d'un outil ou l'opérateur d'agents, autour de 1 € par agent et par mois | Qu'un éditeur paie pour être visible |
-| Mars à juin 2027 | Paiement à la requête en x402 pour l'API, quelques centimes par vérification | Qu'un agent paie lui même pour décider |
-| Au delà | Licence des données d'usage aux agrégateurs et aux registres d'entreprise | Que les gardiens paient la donnée |
+| Revenus | Les agents paient en USDC via x402 pour lire l'index, les outils MCP et les faits hors chaîne. Pas de compte. | Qu'ARP est utile aux agents : le nombre d'appels payés est la mesure |
+| Coûts | ARP finance les dépôts qui apportent une preuve, dans des limites par agent et par jour ; l'agent reste propriétaire de sa position | Que l'usage existe |
+| Neutralité | Les outils ne paient jamais, donc personne n'achète sa place. ARP achète le TRUST qu'il dépense et n'en vend jamais | Que le classement reste crédible |
+| Financement du lancement | Subventions d'écosystème (Intuition d'abord) pour alimenter la trésorerie de financement | Qu'un écosystème soutient la démarche |
+| But final | Une part des revenus des agents et des subventions reversée aux outils utilisés ; ARP prépare les paiements sans jamais les détenir (ADR `0076`) | Que l'argent suit l'usage |
 
-Le précédent le plus proche est celui des sites d'avis : c'est l'entreprise notée qui paie pour sa visibilité, pas le lecteur. Trustpilot a déclaré 261 M$ de revenus en 2025 sur ce modèle.
+Une formule d'abonnement pourra venir plus tard, sous forme de pass acheté une fois en x402. Avant le mainnet, la séparation entre paiements x402 et financement en TRUST doit être vérifiée par un juriste.
 
-**Signaux d'accélération :** des déclarations d'adresses que tu ne contrôles pas chaque semaine, un premier éditeur qui paie le badge sans relance, un agrégateur qui demande l'accès aux données.
+**Signaux d'accélération :** des déclarations d'adresses que tu ne contrôles pas chaque semaine, des premiers appels payés en x402 sans relance, un agrégateur qui demande l'accès aux données.
 
-**Signaux d'arrêt ou de pivot :** fin février 2027, plus de 90 % des déclarations viennent de tes propres agents, ou aucun éditeur ne paie même 1 € après avoir vu son badge.
+**Signaux d'arrêt ou de pivot :** fin février 2027, plus de 90 % des déclarations viennent de tes propres agents, ou aucun agent ne paie pour consulter.
 
 ## Risques
 

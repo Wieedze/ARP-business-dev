@@ -11,7 +11,7 @@ Private workspace for ARP's market research, positioning and go-to-market. The p
 | Path | What it holds |
 | --- | --- |
 | `plan/plan-de-demarrage.md` | Startup plan: market, positioning, allies, first users, plan to EthCC, business model, risks (French) |
-| `pitch/` | Pitch lines and the deck slide sources |
+| `pitch/` | Pitch lines, the deck (sources and single-page HTML) and the presentation kit (`kit-de-presentation.md`) |
 | `plan/next-steps.md` | The plan to EthCC (Nov 2026 to Mar 2027) as a checklist |
 | `research/market-gap-report.md` | Market report: competitors, who pays, demand, failures of past reputation systems (English, sourced, read 2026-10-29) |
 | `research/notes/` | Raw research notes behind the report and the plan, every figure with its URL |
@@ -20,4 +20,4 @@ The living version of the plan is the Claude doc "ARP : plan de démarrage". Thi
 
 ## Status
 
-Pre-product, as of 2026-10-29. No users and no metrics yet; the plan defines the first ones.
+As of 2026-10-30: the core is built on testnet in the `refactor/monorepo-apps` branch of Wieedze/ARP (CLI, hook, MCP server, probe, Claude Code and Gemini plugins). No users and no metrics yet; the plan defines the first ones.
