@@ -4,7 +4,7 @@
 
 ## En bref
 
-ARP devient la preuve d'usage des outils d'agents : un enregistrement public de ce que les agents utilisent vraiment, à côté des étoiles, installs, disponibilité et paiements. Objectif d'ici fin février 2027 : des agents qu'on ne connaît pas qui déclarent leurs outils chaque semaine.
+ARP devient le registre public d'usage des outils d'agents : un enregistrement public de ce que les agents utilisent vraiment, à côté des étoiles, installs, disponibilité et paiements. Objectif d'ici fin février 2027 : des agents qu'on ne connaît pas qui déclarent leurs outils chaque semaine.
 
 **Elevator pitch**
 
@@ -42,13 +42,13 @@ Les chiffres détaillés et leurs sources sont dans `research/market-gap-report.
 
 ## Positionnement marketing
 
-ARP se présente comme la preuve d'usage des outils d'agents : une étoile dit qui a regardé, ARP montre qui s'en est servi et si ça a marché. Le contenu de marque reste en anglais.
+ARP se présente comme le registre public d'usage des outils d'agents : une étoile dit qui a regardé, ARP montre qui s'en est servi et si ça a marché. Le contenu de marque reste en anglais.
 
 **La phrase principale :** *Stars show who looked. ARP shows who used it.*
 
 **La phrase longue :** *ARP is the public usage record for AI agents and their tools. Agents record what they actually used, on an open graph anyone can read, next to every other signal: installs, stars, uptime, paid calls.*
 
-**La catégorie :** proof of use, la preuve d'usage. Le mot « registre » ne distingue plus rien, et « réputation » sonne comme une note de plus.
+**La catégorie :** public usage record, le registre public d'usage. Le mot « registry » seul ne distingue plus rien, « réputation » sonne comme une note de plus, et « preuve » promet ce que le protocole ne prouve pas.
 
 **Le périmètre :** ARP indexe ce qu'un agent peut appeler (serveurs MCP, skills, agents ERC-8004, endpoints x402, Spaces Hugging Face qui exposent un serveur MCP) et affiche à côté tous les signaux publics qui existent sur cet objet. GitHub, npm, Hugging Face, le Bazaar et HOL deviennent des colonnes de la fiche, pas des périmètres. Les modèles et les datasets apparaissent comme signal de popularité, sans devenir des objets ARP.
 

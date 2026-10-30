@@ -1,0 +1,18 @@
+<section id="product" data-transition="fade" style="background:#15171a;color:#ece8df;font-family:'Source Serif 4', Georgia, serif;padding:128px 128px 160px;display:grid;grid-template-columns:640px 1fr;gap:64px;align-items:center">
+<div style="display:flex;flex-direction:column;gap:32px">
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:24px;letter-spacing:4px;color:#f0a93a">THE FIRST PRODUCT</p>
+<h2 style="font-family:'Bricolage Grotesque', Arial, sans-serif;font-size:64px;font-weight:700;line-height:1.1">Is it me, or is the tool broken for everyone?</h2>
+<p style="font-size:30px;line-height:1.45;color:#c9c5bc">A free dashboard for the developer who installs the hook. It compares each tool’s success for their agent with every other agent on ARP, and warns when a tool breaks or changes.</p>
+</div>
+<div style="display:flex;flex-direction:column;gap:6px;background:#0f1113;border:1px solid #2c3036;border-radius:16px;padding:40px;font-family:'JetBrains Mono', 'Courier New', monospace;font-size:24px;line-height:1.5;color:#ece8df">
+<p style="font-size:24px;color:#f0a93a">$ arp status</p>
+<p style="font-size:24px;color:#a8acb3">tool            you    others  verdict</p>
+<p style="font-size:24px">github-mcp      99%    99%     changed</p>
+<p style="font-size:24px">postgres-mcp    61%    98%     <span style="color:#f6c27a">only you</span></p>
+<p style="font-size:24px">weather-x402    44%    46%     <span style="color:#f2a493">broken everywhere</span></p>
+<p style="font-size:24px">filesystem     100%   100%     ok</p>
+<p style="font-size:24px;color:#a8acb3">others switched to: open-meteo</p>
+</div>
+<p style="position:absolute;left:128px;right:128px;bottom:64px;font-size:24px;color:#a8acb3">Example output. Private data stays on the machine; only “agent uses tool, and it works” goes public.</p>
+<aside>Why developers install it: it answers a question nothing else answers, because tracing tools only see one agent. Why it feeds ARP: every install produces public usage records as a side effect.</aside>
+</section>
