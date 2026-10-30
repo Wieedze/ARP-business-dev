@@ -3,20 +3,20 @@
 <p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:24px;letter-spacing:4px;color:#f0a93a">HOW IT WORKS</p>
 <h2 style="font-family:'Bricolage Grotesque', Arial, sans-serif;font-size:60px;font-weight:700;line-height:1.1">Is it me, or is the tool broken for everyone?</h2>
 <div style="display:flex;flex-direction:column;gap:20px">
-<p style="font-size:30px;line-height:1.4;color:#c9c5bc"><span style="color:#f0a93a">1 · Record.</span> A hook logs each tool call on the machine. Never the content.</p>
-<p style="font-size:30px;line-height:1.4;color:#c9c5bc"><span style="color:#f0a93a">2 · Declare.</span> The first call that works writes “agent uses tool” on Intuition.</p>
-<p style="font-size:30px;line-height:1.4;color:#c9c5bc"><span style="color:#f0a93a">3 · Compare.</span> The developer sees their tools next to every other agent’s.</p>
+<p style="font-size:30px;line-height:1.4;color:#c9c5bc"><span style="color:#f0a93a">1 · Install.</span> One command, or a plugin for Claude Code and Gemini.</p>
+<p style="font-size:30px;line-height:1.4;color:#c9c5bc"><span style="color:#f0a93a">2 · Record.</span> A hook logs each call’s outcome on the machine. Never the content.</p>
+<p style="font-size:30px;line-height:1.4;color:#c9c5bc"><span style="color:#f0a93a">3 · Publish.</span> When the agent brings a proof, ARP sponsors its deposit on Intuition. The agent owns the position.</p>
 </div>
 </div>
 <div style="display:flex;flex-direction:column;gap:6px;background:#0f1113;border:1px solid #2c3036;border-radius:16px;padding:40px;font-family:'JetBrains Mono', 'Courier New', monospace;font-size:24px;line-height:1.5;color:#ece8df">
-<p style="font-size:24px;color:#f0a93a">$ arp status</p>
+<p style="font-size:24px;color:#f0a93a">$ npx @arp-protocol/cli init</p>
+<p style="font-size:24px;color:#a8acb3">$ arp status</p>
 <p style="font-size:24px;color:#a8acb3">tool            you    others  verdict</p>
 <p style="font-size:24px">github-mcp      99%    99%     changed</p>
 <p style="font-size:24px">postgres-mcp    61%    98%     <span style="color:#f6c27a">only you</span></p>
 <p style="font-size:24px">weather-x402    44%    46%     <span style="color:#f2a493">broken everywhere</span></p>
 <p style="font-size:24px">filesystem     100%   100%     ok</p>
-<p style="font-size:24px;color:#a8acb3">others switched to: open-meteo</p>
 </div>
-<p style="position:absolute;left:128px;right:128px;bottom:64px;font-size:24px;color:#a8acb3">Example output. ARP holds no key, sits in no request path and composes no score; a tool’s place comes from what others put behind it.</p>
-<aside>The free dashboard is why developers install it: tracing tools only see one agent, ARP sees the network. Every install produces public usage records as a side effect.</aside>
+<p style="position:absolute;left:128px;right:128px;bottom:64px;font-size:24px;color:#a8acb3">Example output. ARP is the directory and the verifier, never the relay: no request or prompt passes through ARP.</p>
+<aside>Built on testnet: the CLI with one arp binary, the hook, the MCP server, the probe, and the Claude Code and Gemini plugins. The free view is why developers install it; every install produces public usage records. Proof levels: a payment plus a signed hire receipt is strong; the hook alone is weak and stays labelled declared.</aside>
 </section>

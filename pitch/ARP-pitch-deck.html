@@ -54,22 +54,22 @@ section h1,section h2,section h3,section p{margin:0} aside,x-icon{display:none} 
 <p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:24px;letter-spacing:4px;color:#f0a93a">HOW IT WORKS</p>
 <h2 style="font-family:'Bricolage Grotesque', Arial, sans-serif;font-size:60px;font-weight:700;line-height:1.1">Is it me, or is the tool broken for everyone?</h2>
 <div style="display:flex;flex-direction:column;gap:20px">
-<p style="font-size:30px;line-height:1.4;color:#c9c5bc"><span style="color:#f0a93a">1 · Record.</span> A hook logs each tool call on the machine. Never the content.</p>
-<p style="font-size:30px;line-height:1.4;color:#c9c5bc"><span style="color:#f0a93a">2 · Declare.</span> The first call that works writes “agent uses tool” on Intuition.</p>
-<p style="font-size:30px;line-height:1.4;color:#c9c5bc"><span style="color:#f0a93a">3 · Compare.</span> The developer sees their tools next to every other agent’s.</p>
+<p style="font-size:30px;line-height:1.4;color:#c9c5bc"><span style="color:#f0a93a">1 · Install.</span> One command, or a plugin for Claude Code and Gemini.</p>
+<p style="font-size:30px;line-height:1.4;color:#c9c5bc"><span style="color:#f0a93a">2 · Record.</span> A hook logs each call’s outcome on the machine. Never the content.</p>
+<p style="font-size:30px;line-height:1.4;color:#c9c5bc"><span style="color:#f0a93a">3 · Publish.</span> When the agent brings a proof, ARP sponsors its deposit on Intuition. The agent owns the position.</p>
 </div>
 </div>
 <div style="display:flex;flex-direction:column;gap:6px;background:#0f1113;border:1px solid #2c3036;border-radius:16px;padding:40px;font-family:'JetBrains Mono', 'Courier New', monospace;font-size:24px;line-height:1.5;color:#ece8df">
-<p style="font-size:24px;color:#f0a93a">$ arp status</p>
+<p style="font-size:24px;color:#f0a93a">$ npx @arp-protocol/cli init</p>
+<p style="font-size:24px;color:#a8acb3">$ arp status</p>
 <p style="font-size:24px;color:#a8acb3">tool            you    others  verdict</p>
 <p style="font-size:24px">github-mcp      99%    99%     changed</p>
 <p style="font-size:24px">postgres-mcp    61%    98%     <span style="color:#f6c27a">only you</span></p>
 <p style="font-size:24px">weather-x402    44%    46%     <span style="color:#f2a493">broken everywhere</span></p>
 <p style="font-size:24px">filesystem     100%   100%     ok</p>
-<p style="font-size:24px;color:#a8acb3">others switched to: open-meteo</p>
 </div>
-<p style="position:absolute;left:128px;right:128px;bottom:64px;font-size:24px;color:#a8acb3">Example output. ARP holds no key, sits in no request path and composes no score; a tool’s place comes from what others put behind it.</p>
-<aside>The free dashboard is why developers install it: tracing tools only see one agent, ARP sees the network. Every install produces public usage records as a side effect.</aside>
+<p style="position:absolute;left:128px;right:128px;bottom:64px;font-size:24px;color:#a8acb3">Example output. ARP is the directory and the verifier, never the relay: no request or prompt passes through ARP.</p>
+<aside>Built on testnet: the CLI with one arp binary, the hook, the MCP server, the probe, and the Claude Code and Gemini plugins. The free view is why developers install it; every install produces public usage records. Proof levels: a payment plus a signed hire receipt is strong; the hook alone is weak and stays labelled declared.</aside>
 </section>
 
 <section id="whynow" data-transition="fade" style="background:#f2efe8;color:#15171a;font-family:'Source Serif 4', Georgia, serif;padding:128px 128px 160px;display:flex;flex-direction:column;justify-content:space-between;gap:48px">
@@ -115,23 +115,23 @@ section h1,section h2,section h3,section p{margin:0} aside,x-icon{display:none} 
 <section id="model" data-transition="fade" style="background:#f2efe8;color:#15171a;font-family:'Source Serif 4', Georgia, serif;padding:128px 128px 160px;display:flex;flex-direction:column;justify-content:space-between;gap:48px">
 <div style="display:flex;flex-direction:column;gap:24px">
 <p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:24px;letter-spacing:4px;color:#8f5408">BUSINESS MODEL</p>
-<h2 style="font-family:'Bricolage Grotesque', Arial, sans-serif;font-size:72px;font-weight:700;line-height:1.1">The rated party pays, never the reader.</h2>
+<h2 style="font-family:'Bricolage Grotesque', Arial, sans-serif;font-size:72px;font-weight:700;line-height:1.1">Agents pay to consult. Tools never pay.</h2>
 </div>
 <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:24px">
 <div style="display:flex;flex-direction:column;gap:16px;background:#ffffff;border:1px solid #ddd8cd;border-radius:16px;padding:36px">
-<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:24px;color:#8f5408">NOW</p>
-<h3 style="font-family:'Bricolage Grotesque', Arial, sans-serif;font-size:36px;font-weight:700;line-height:1.15">Grants</h3>
-<p style="font-size:28px;line-height:1.4;color:#4a4e55">Ecosystem grants pay the first declaration fees.</p>
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:24px;color:#8f5408">REVENUE</p>
+<h3 style="font-family:'Bricolage Grotesque', Arial, sans-serif;font-size:36px;font-weight:700;line-height:1.15">Pay per consult</h3>
+<p style="font-size:28px;line-height:1.4;color:#4a4e55">Agents pay in USDC over x402 to read the index and the MCP tools. No account.</p>
 </div>
 <div style="display:flex;flex-direction:column;gap:16px;background:#ffffff;border:1px solid #ddd8cd;border-radius:16px;padding:36px">
-<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:24px;color:#8f5408">NEXT</p>
-<h3 style="font-family:'Bricolage Grotesque', Arial, sans-serif;font-size:36px;font-weight:700;line-height:1.15">Place in the answer</h3>
-<p style="font-size:28px;line-height:1.4;color:#4a4e55">Tool authors and operators pay for visibility and a badge.</p>
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:24px;color:#8f5408">COST</p>
+<h3 style="font-family:'Bricolage Grotesque', Arial, sans-serif;font-size:36px;font-weight:700;line-height:1.15">Sponsored deposits</h3>
+<p style="font-size:28px;line-height:1.4;color:#4a4e55">ARP pays the deposits that carry a proof, within daily limits per agent.</p>
 </div>
 <div style="display:flex;flex-direction:column;gap:16px;background:#ffffff;border:1px solid #ddd8cd;border-radius:16px;padding:36px">
-<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:24px;color:#8f5408">THEN</p>
-<h3 style="font-family:'Bricolage Grotesque', Arial, sans-serif;font-size:36px;font-weight:700;line-height:1.15">Pay per check</h3>
-<p style="font-size:28px;line-height:1.4;color:#4a4e55">Agents pay cents over x402 to check a tool before calling it.</p>
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:24px;color:#8f5408">RULE</p>
+<h3 style="font-family:'Bricolage Grotesque', Arial, sans-serif;font-size:36px;font-weight:700;line-height:1.15">Neutral by design</h3>
+<p style="font-size:28px;line-height:1.4;color:#4a4e55">Tools cannot buy their place. ARP buys the TRUST it spends and never sells any.</p>
 </div>
 <div style="display:flex;flex-direction:column;gap:16px;background:#15171a;border:1px solid #15171a;border-radius:16px;padding:36px">
 <p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:24px;color:#f0a93a">GOAL</p>
@@ -139,42 +139,42 @@ section h1,section h2,section h3,section p{margin:0} aside,x-icon{display:none} 
 <p style="font-size:28px;line-height:1.4;color:#c9c5bc">Grants and agent earnings routed to the tools agents used.</p>
 </div>
 </div>
-<p style="position:absolute;left:128px;right:128px;bottom:64px;font-size:24px;color:#4a4e55">Precedent: on review platforms the rated business pays, and readers never do (Trustpilot, $261M revenue in 2025). ARP plans payments and never holds one.</p>
-<aside>Readers never pay for ratings in any adjacent market. Money comes from the rated party buying visibility, or from a score that gates money. ARP starts with grants, then sells the place in the answer, then pay-per-check, and the end state is routing value to the tools that agents depend on.</aside>
+<p style="position:absolute;left:128px;right:128px;bottom:64px;font-size:24px;color:#4a4e55">The number of paid calls is the measure of whether ARP is useful to agents. ARP plans payments and never holds one.</p>
+<aside>Revenue comes from the agents that consult ARP, in x402 USDC. Tools never pay, so nobody can buy a place in the answer. ARP sponsors deposits that carry a proof and the agent owns the position; an agent that withdraws too much stops being sponsored. A subscription may come later as a pass bought once in x402.</aside>
 </section>
 
 <section id="plan" data-transition="fade" style="background:#f2efe8;color:#15171a;font-family:'Source Serif 4', Georgia, serif;padding:128px 128px 160px;display:flex;flex-direction:column;justify-content:space-between;gap:48px">
 <div style="display:flex;flex-direction:column;gap:24px">
 <p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:24px;letter-spacing:4px;color:#8f5408">THE PLAN TO ETHCC</p>
 <h2 style="font-family:'Bricolage Grotesque', Arial, sans-serif;font-size:72px;font-weight:700;line-height:1.1">100 agents I don’t control, before April.</h2>
-<p style="font-size:30px;line-height:1.4;color:#4a4e55">Distribution: a monthly public report on agent tools, a skill on skills.sh where agents already look for tools (find-skills: 4.1M installs), a badge and a public page per tool.</p>
+<p style="font-size:30px;line-height:1.4;color:#4a4e55">Distribution: a monthly public report on agent tools, a skill on skills.sh where agents already look for tools (find-skills: 4.1M installs), plugins for the agent runtimes.</p>
 </div>
 <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:24px">
+<div style="display:flex;flex-direction:column;gap:12px;border-top:4px solid #8f5408;padding:28px 0 0">
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:24px;color:#8f5408">OCT 2026 · DONE</p>
+<h3 style="font-family:'Bricolage Grotesque', Arial, sans-serif;font-size:40px;font-weight:700">Built</h3>
+<p style="font-size:28px;line-height:1.4;color:#4a4e55">CLI, hook, MCP server, probe. 22 MCP servers on testnet.</p>
+</div>
 <div style="display:flex;flex-direction:column;gap:12px;border-top:4px solid #4a4e55;padding:28px 0 0">
 <p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:24px;color:#4a4e55">NOV 2026</p>
-<h3 style="font-family:'Bricolage Grotesque', Arial, sans-serif;font-size:40px;font-weight:700">Build</h3>
-<p style="font-size:28px;line-height:1.4;color:#4a4e55">Hook, arp status, badge, public pages.</p>
+<h3 style="font-family:'Bricolage Grotesque', Arial, sans-serif;font-size:40px;font-weight:700">Ship</h3>
+<p style="font-size:28px;line-height:1.4;color:#4a4e55">Package on npm, Claude Code and Gemini plugins, first report.</p>
 </div>
 <div style="display:flex;flex-direction:column;gap:12px;border-top:4px solid #4a4e55;padding:28px 0 0">
 <p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:24px;color:#4a4e55">DEC TO MID JAN</p>
 <h3 style="font-family:'Bricolage Grotesque', Arial, sans-serif;font-size:40px;font-weight:700">Seed</h3>
-<p style="font-size:28px;line-height:1.4;color:#4a4e55">First report, first 10 installs.</p>
+<p style="font-size:28px;line-height:1.4;color:#4a4e55">First 10 installs with design partners.</p>
 <p style="font-size:26px;font-weight:600;color:#8f5408">Gate: 10 third-party agents</p>
 </div>
 <div style="display:flex;flex-direction:column;gap:12px;border-top:4px solid #4a4e55;padding:28px 0 0">
-<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:24px;color:#4a4e55">MID JAN TO FEB</p>
-<h3 style="font-family:'Bricolage Grotesque', Arial, sans-serif;font-size:40px;font-weight:700">Connect</h3>
-<p style="font-size:28px;line-height:1.4;color:#4a4e55">Framework plugins, MCP registry, HOL.</p>
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:24px;color:#4a4e55">MID JAN TO APR</p>
+<h3 style="font-family:'Bricolage Grotesque', Arial, sans-serif;font-size:40px;font-weight:700">Grow</h3>
+<p style="font-size:28px;line-height:1.4;color:#4a4e55">Paid consults over x402, demo at EthCC Cannes.</p>
 <p style="font-size:26px;font-weight:600;color:#8f5408">Gate: 100 distinct agents</p>
-</div>
-<div style="display:flex;flex-direction:column;gap:12px;border-top:4px solid #8f5408;padding:28px 0 0">
-<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:24px;color:#8f5408">MAR TO APR 2027</p>
-<h3 style="font-family:'Bricolage Grotesque', Arial, sans-serif;font-size:40px;font-weight:700">Prove</h3>
-<p style="font-size:28px;line-height:1.4;color:#4a4e55">First paid badge, demo at EthCC Cannes.</p>
 </div>
 </div>
 <p style="position:absolute;left:128px;right:128px;bottom:64px;font-size:24px;color:#4a4e55">Every number in my monthly update is recomputable from the Intuition graph. I publish my own addresses so you can exclude them.</p>
-<aside>Gates count from the day the hook ships, not from the calendar. If the first gate fails, no integrations: I go back to the first users and find what blocks. The metric is declarations per week from addresses I do not control.</aside>
+<aside>The core is already built on testnet: one arp binary with init, uninstall and doctor, the hook, the MCP server, the probe and the plugins. Gates count from the day the package ships on npm. The metrics: declarations per week from addresses I do not control, and paid calls.</aside>
 </section>
 
 <section id="founder" data-transition="fade" style="background:#15171a">
@@ -224,8 +224,8 @@ section h1,section h2,section h3,section p{margin:0} aside,x-icon{display:none} 
 </div>
 <div style="display:flex;flex-direction:column;gap:16px;background:#ffffff;border:1px solid #ddd8cd;border-radius:16px;padding:40px">
 <x-icon name="Lightning" style="color:#8f5408;width:72px;height:72px"></x-icon>
-<h3 style="font-family:'Bricolage Grotesque', Arial, sans-serif;font-size:36px;font-weight:700">Fee sponsorship</h3>
-<p style="font-size:28px;line-height:1.4;color:#4a4e55">An ecosystem grant that pays the first declarations, so installing costs users nothing.</p>
+<h3 style="font-family:'Bricolage Grotesque', Arial, sans-serif;font-size:36px;font-weight:700">Sponsorship treasury</h3>
+<p style="font-size:28px;line-height:1.4;color:#4a4e55">An ecosystem grant that funds the deposits ARP sponsors, so agents with a proof publish for free.</p>
 </div>
 </div>
 <p style="font-size:32px;line-height:1.4">Follow the line: a short monthly update, three numbers anyone can recompute. Reply “yes” to <b>[YOUR EMAIL]</b>.</p>

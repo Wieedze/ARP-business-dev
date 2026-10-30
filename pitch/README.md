@@ -12,6 +12,8 @@ The living versions are the Claude artifacts "ARP Pitch Deck" (14 slides, Englis
 | Mission | Keep an open record of what agents actually use, and whether it works. |
 | What ARP sells (ADR 0075) | The place in the answer, and your place comes from others. |
 | How money moves (ADR 0076) | ARP plans payments and never holds one. |
+| Revenue (ADR 0094) | Agents pay to consult ARP in USDC over x402. Tools never pay. |
+| Role (ADR 0094) | ARP is the directory and the verifier, never the relay. |
 
 ## 10 seconds
 
@@ -19,7 +21,7 @@ The living versions are the Claude artifacts "ARP Pitch Deck" (14 slides, Englis
 
 ## Words never used
 
-`best`, `score`, `verified` about a usage, `proof`, `trustless`, `guaranteed`. The category is **public usage record**, not "proof of use".
+`best`, `score`, `verified` about a usage, `proof` (except the *proven* label of ADR 0094: a payment plus a signed receipt), `trustless`, `guaranteed`. The category is **public usage record**, not "proof of use".
 
 ## Deck order
 
