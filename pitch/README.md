@@ -23,4 +23,4 @@ The living versions are the Claude artifacts "ARP Pitch Deck" (14 slides, Englis
 
 ## Deck order
 
-cover, problem, signals, insight, how, product, whynow, landscape, model, gtm, plan, founder, vision, ask.
+cover, problem, insight, product, whynow, landscape, model, plan, founder, ask.
