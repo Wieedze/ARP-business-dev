@@ -135,7 +135,7 @@ Sur l'échelle de preuve (`docs/09` §3 du dépôt ARP), une installation reste 
 3. **L'écart est surtout potentiel.** Sur testnet, presque tous les skills ont 0 déclaration ; seuls les agents n° 9 et n° 10, les nôtres, ont déclaré quelque chose (2 novembre 2026).
 4. **Aucune économie de tokens :** 3,14 fois plus que la réponse de mémoire (tâche 45c), 5,19 fois sur les questions d'installation (tâche 52).
 
-**La direction que ça indique** (dans `FUTURE.md` du dépôt ARP, reportée par toi pour la preuve de concept) : ne pas concurrencer skills.sh sur la recherche. S'appuyer dessus, avec une copie en cache pour quand il tombe, et ajouter ce qui lui manque : la preuve d'usage.
+**La direction que ça indique** (dans `FUTURE.md` du dépôt ARP, reportée par toi pour la preuve de concept) : ne pas concurrencer skills.sh sur la recherche. S'appuyer dessus, avec une copie en cache pour quand il tombe, et ajouter ce qui lui manque : la preuve d'usage. Ta décision du 2 novembre 2026 : « forker skills.sh » veut dire utiliser sa recherche en direct, plus une copie en cache datée, plus tard ; ni copie complète, ni crawl maison (`FUTURE.md`, PR #40 du dépôt ARP).
 
 ## Le kit de lancement
 
