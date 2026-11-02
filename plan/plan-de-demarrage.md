@@ -60,13 +60,13 @@ ARP se présente comme le registre public d'usage des outils d'agents : une éto
 | Registres et annuaires | L'outil existe | Il est utilisé, par combien d'agents distincts |
 | Avis et notes | Quelqu'un a donné son avis | Un usage réel, signé et daté |
 | Tableaux de bord privés | L'état du moment, chez un fournisseur | Un historique public que personne ne peut réécrire |
-| La mémoire de l'agent | Ce que le modèle connaît, souvent une bibliothèque ou un service payant | Le skill qui existe pour cette tâche, servi seul, sans cloner le dépôt |
+| La mémoire de l'agent | Ce que le modèle connaît, souvent une bibliothèque ou un service payant | Le skill qui existe pour cette tâche |
 
 **L'argument de découverte** (ajouté le 2 novembre 2026, à côté des autres, sans en remplacer aucun). À la question « que puis je installer pour que tu le fasses toi même ? », Claude avec ARP nomme un skill ou un serveur MCP qui existe dans **40 réponses sur 42** (entre 84 et 99 %) ; sans ARP, dans **6 sur 42** (entre 7 et 28 %). Aucun des deux n'en invente. Sans ARP, il répond de mémoire : une bibliothèque, un service payant, ou il propose de le coder lui même. Il avait accès à la recherche web et ne s'en est pas servi une seule fois.
 
 La phrase : *Without ARP, your agent answers from memory. With ARP, it names the skill that exists for the job.*
 
-L'utilisateur n'a besoin de connaître ni GitHub ni skills.sh : il décrit sa tâche, l'agent trouve le skill, et ARP lui sert ce skill seul, avec un reçu signé, au lieu d'un dépôt qui en contient des dizaines. Dans Claude Desktop, la recherche marche aujourd'hui ; récupérer et exécuter le skill est en cours de finition (tâche 50 du dépôt ARP), sur testnet.
+L'utilisateur n'a besoin de connaître ni GitHub ni skills.sh : il décrit sa tâche, l'agent trouve le skill, et ARP lui sert son fichier SKILL.md avec un reçu signé. Les scripts dont certains skills ont besoin ne sont pas encore servis : c'est une précondition proposée par la tâche 54, pas encore décidée. Dans Claude Desktop, la recherche marche aujourd'hui ; récupérer et exécuter le skill est en cours de finition (tâche 50 du dépôt ARP), sur testnet.
 
 Quatre choses que cet argument ne dit pas :
 

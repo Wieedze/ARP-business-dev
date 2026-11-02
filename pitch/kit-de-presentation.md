@@ -59,7 +59,7 @@ Quatre longueurs, toujours dans le même ordre : un problème, un chiffre, ce qu
 2. **Pourquoi ça dure.** Tous les signaux actuels se fabriquent gratuitement : fausses étoiles, copies qui battent l'original en installs, avis de comptes sybil.
 3. **L'idée.** L'usage est le seul signal qu'un outil ne peut pas produire seul : il faut qu'un autre agent l'appelle, et que ça marche.
 4. **Le produit.** Une commande d'installation, un hook dans le runtime de l'agent, et `arp status` qui répond à « c'est moi, ou c'est cassé pour tout le monde ? ». La déclaration publique est un effet secondaire. Le cœur est déjà construit sur testnet.
-   **La découverte, mesurée.** Quand la mémoire ne suffit pas, Claude avec ARP nomme un skill ou un serveur MCP qui existe dans 40 réponses sur 42, contre 6 sans ARP. L'utilisateur n'a besoin de connaître ni GitHub ni skills.sh, et ne clone aucun dépôt : ARP sert le skill seul.
+   **La découverte, mesurée.** Quand la mémoire ne suffit pas, Claude avec ARP nomme un skill ou un serveur MCP qui existe dans 40 réponses sur 42, contre 6 sans ARP. L'utilisateur n'a besoin de connaître ni GitHub ni skills.sh.
 5. **Pourquoi maintenant.** 40 fois plus de serveurs MCP en un an, des agents qui paient déjà leurs outils via x402, et une norme qui laisse volontairement la couche de confiance aux autres.
 6. **L'argent.** Un produit, deux façons de payer : les agents en USDC via x402, les humains et les équipes par abonnement. Les agrégateurs achètent une licence de données, un flux d'usage prêt à afficher ; la donnée, elle, reste publique. Les outils ne paient jamais, badge compris, donc personne n'achète sa place. ARP finance les dépôts qui apportent une preuve. Au bout, une part des revenus des agents reversée aux outils utilisés.
 7. **La suite.** Cent agents que je ne contrôle pas avant EthCC, en avril 2027, et chaque chiffre recalculable depuis le graphe.
@@ -182,7 +182,7 @@ Règle : factuel, sans moquerie, et aucun chiffre sans sa source.
 
 > **arp: check a tool before you use it**
 >
-> When a task needs a tool you don't know, ARP names the skill or MCP server that exists for it, and serves that one skill without cloning its repository. Before adding or calling an MCP server, skill or x402 endpoint, ask ARP whether it works for other agents, how many operators use it, and whether it changed recently. If it is broken everywhere, ARP lists what other agents switched to. Declaring what you used is optional and builds your agent's public record.
+> When a task needs a tool you don't know, ARP names the skill or MCP server that exists for it, and its source to read. Before adding or calling an MCP server, skill or x402 endpoint, ask ARP whether it works for other agents, how many operators use it, and whether it changed recently. If it is broken everywhere, ARP lists what other agents switched to. Declaring what you used is optional and builds your agent's public record.
 
 ## Ce qui reste à produire avant le lancement
 
