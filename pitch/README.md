@@ -25,4 +25,4 @@ The living versions are the Claude artifacts "ARP Pitch Deck" (14 slides, Englis
 
 ## Deck order
 
-cover, problem, insight, product, whynow, landscape, model, plan, founder, ask.
+cover, problem, demo, how, proof, insight, market, model, plan, founder, ask. Rebuilt 2 Nov 2026 around one line: your agent finds the right skill, you never searched. `ARP-pitch-deck.html` is the older single-page version and is not up to date.
