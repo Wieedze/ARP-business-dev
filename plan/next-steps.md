@@ -30,7 +30,7 @@ Indicateur principal : nombre de déclarations par semaine venant d'adresses que
 
 ## Prouver (mars 2027)
 
-- [ ] Tester le badge payant à 1 € par agent et par mois
+- [ ] Proposer une licence de données à un agrégateur (HOL ou Glama d'abord) et noter sa réponse
 - [ ] Proposer un profil « usage d'outil » dans le suivi de tickets de 8004scan
 - [ ] Faire le bilan : continuer, accélérer ou pivoter
 - [ ] Préparer la démo pour EthCC, Cannes, 12 au 15 avril 2027

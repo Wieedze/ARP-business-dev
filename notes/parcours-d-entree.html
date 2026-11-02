@@ -1,0 +1,274 @@
+<title>Parcours d'entrée ARP</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&family=Geist+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: one reading column; the five paths as a ruled index, each path a numbered sequence because its steps really are an order. */
+:root {
+  --ground: #0e0f11; --panel: #15171a; --raised: #1c1f23;
+  --fg: #ece9e2; --silver: #b9b7b1; --steel: #8d8c88;
+  --rule: #2a2d31; --rule-strong: #3a3e43;
+  --accent: #ffb020; --accent-ink: #1a1408;
+  --done: #7fbf8f; --todo: #e0a060;
+  --display: "Archivo", "Helvetica Neue", Arial, sans-serif;
+  --mono: "Geist Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  color-scheme: dark;
+}
+@media (prefers-color-scheme: light) { :root:not([data-theme="dark"]) {
+  --ground: #f4f3ef; --panel: #ffffff; --raised: #ecebe6; --fg: #17181a; --silver: #3d3f43; --steel: #5d5f63;
+  --rule: #dcdad3; --rule-strong: #c4c1b8; --accent: #b36b00; --accent-ink: #fff8ec; --done: #2f7a45; --todo: #9a5a10; color-scheme: light } }
+:root[data-theme="light"] {
+  --ground: #f4f3ef; --panel: #ffffff; --raised: #ecebe6; --fg: #17181a; --silver: #3d3f43; --steel: #5d5f63;
+  --rule: #dcdad3; --rule-strong: #c4c1b8; --accent: #b36b00; --accent-ink: #fff8ec; --done: #2f7a45; --todo: #9a5a10; color-scheme: light }
+:root[data-theme="dark"] {
+  --ground: #0e0f11; --panel: #15171a; --raised: #1c1f23; --fg: #ece9e2; --silver: #b9b7b1; --steel: #8d8c88;
+  --rule: #2a2d31; --rule-strong: #3a3e43; --accent: #ffb020; --accent-ink: #1a1408; --done: #7fbf8f; --todo: #e0a060; color-scheme: dark }
+
+* { box-sizing: border-box }
+body { background: var(--ground); color: var(--fg); font-family: var(--display); font-size: 16px; line-height: 1.6;
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); padding-block: 48px 96px }
+main { max-width: 980px; margin: 0 auto; display: flex; flex-direction: column; gap: 72px }
+section { display: flex; flex-direction: column; gap: 20px; min-width: 0 }
+.label { font-family: var(--mono); font-size: 12px; letter-spacing: .1em; text-transform: uppercase; color: var(--steel) }
+h1 { font-weight: 800; font-stretch: 125%; letter-spacing: -.03em; line-height: .95; font-size: clamp(40px, 7vw, 76px); margin: 0; text-wrap: balance }
+h2 { font-weight: 800; font-stretch: 112%; letter-spacing: -.02em; line-height: 1.05; font-size: clamp(26px, 3.6vw, 36px); margin: 0; text-wrap: balance }
+h3 { font-weight: 700; font-size: 20px; margin: 0; line-height: 1.25 }
+p { margin: 0; max-width: 68ch; color: var(--silver) }
+p.lead { font-size: 19px; color: var(--fg) }
+strong { color: var(--fg); font-weight: 600 }
+code, .mono { font-family: var(--mono); font-size: 14px }
+code { background: var(--raised); padding: 1px 6px; border-radius: 6px; color: var(--fg); overflow-wrap: anywhere }
+a { color: var(--fg); text-decoration-color: var(--accent); text-underline-offset: 3px }
+a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px }
+
+.gap { border: 1px solid var(--rule-strong); border-radius: 12px; background: var(--panel); padding: 24px; display: grid; grid-template-columns: 1fr 1fr; gap: 24px }
+.gap > div { display: flex; flex-direction: column; gap: 8px; min-width: 0 }
+.gap ul { margin: 0; padding-left: 18px; color: var(--silver) }
+
+/* The chooser mock: what scene 4 of the landing would show. Titles only, per ui.md. */
+.chooser { border: 1px solid var(--rule); border-radius: 12px; padding: 28px; display: flex; flex-direction: column; gap: 20px; background: var(--panel) }
+.chooser .q { font-weight: 800; font-stretch: 125%; letter-spacing: -.02em; font-size: clamp(24px, 3.4vw, 34px); line-height: 1 }
+.tiles { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 12px }
+.tile { border: 1px solid var(--rule-strong); border-radius: 12px; padding: 16px; display: flex; flex-direction: column; gap: 10px; background: var(--ground); min-height: 128px }
+.tile.primary { border-color: var(--accent) }
+.tile .t { font-weight: 700; font-size: 17px; line-height: 1.25; color: var(--fg) }
+.tile .k { margin-top: auto; font-family: var(--mono); font-size: 12px; color: var(--steel) }
+.tile.primary .k { color: var(--accent) }
+
+.paths { display: flex; flex-direction: column; border-top: 1px solid var(--rule-strong) }
+.path { display: grid; grid-template-columns: 200px 1fr; gap: 28px; padding-block: 32px; border-bottom: 1px solid var(--rule) }
+.path aside { display: flex; flex-direction: column; gap: 10px; min-width: 0 }
+.path .id { font-family: var(--mono); font-size: 12px; letter-spacing: .1em; color: var(--accent) }
+.path .aha { font-size: 15px; color: var(--silver) }
+.path .aha b { display: block; font-family: var(--mono); font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--steel); font-weight: 500; margin-bottom: 2px }
+.body { display: flex; flex-direction: column; gap: 16px; min-width: 0 }
+ol.steps { list-style: none; margin: 0; padding: 0; counter-reset: s; display: flex; flex-direction: column }
+ol.steps li { counter-increment: s; display: grid; grid-template-columns: 28px 1fr auto; gap: 12px; align-items: baseline; padding-block: 10px; border-bottom: 1px solid var(--rule) }
+ol.steps li:last-child { border-bottom: none }
+ol.steps li::before { content: counter(s); font-family: var(--mono); font-size: 13px; color: var(--steel) }
+ol.steps .s { color: var(--fg); min-width: 0 }
+.st { font-family: var(--mono); font-size: 11px; letter-spacing: .06em; text-transform: uppercase; white-space: nowrap; padding: 2px 8px; border-radius: 6px; border: 1px solid currentColor }
+.st.ok { color: var(--done) } .st.part { color: var(--silver) } .st.new { color: var(--todo) }
+.note { font-size: 14px; color: var(--steel) }
+
+.refs { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0; border-top: 1px solid var(--rule-strong) }
+.ref { padding: 18px 20px 18px 0; border-bottom: 1px solid var(--rule); display: flex; flex-direction: column; gap: 6px; min-width: 0 }
+.ref:nth-child(odd) { padding-right: 28px } .ref:nth-child(even) { padding-left: 20px; border-left: 1px solid var(--rule) }
+.ref .n { font-weight: 700 } .ref p { font-size: 15px }
+
+table { border-collapse: collapse; width: 100%; font-size: 15px }
+.tw { overflow-x: auto }
+th, td { text-align: left; padding: 10px 12px 10px 0; border-bottom: 1px solid var(--rule); vertical-align: top }
+th { font-family: var(--mono); font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--steel); font-weight: 500; border-bottom-color: var(--rule-strong) }
+td { color: var(--silver) } td:first-child { color: var(--fg); white-space: nowrap }
+
+ol.qs { margin: 0; padding-left: 22px; display: flex; flex-direction: column; gap: 12px; color: var(--silver); max-width: 72ch }
+ol.qs li::marker { font-family: var(--mono); color: var(--steel) }
+
+@media (max-width: 820px) {
+  .tiles { grid-template-columns: repeat(2, minmax(0, 1fr)) }
+  .path { grid-template-columns: 1fr; gap: 16px }
+  .gap, .refs { grid-template-columns: 1fr }
+  .ref:nth-child(even) { padding-left: 0; border-left: none }
+}
+@media (max-width: 460px) { .tiles { grid-template-columns: 1fr } .tile { min-height: 0 } ol.steps li { grid-template-columns: 24px 1fr } ol.steps .st { grid-column: 2 } }
+</style>
+
+<main>
+  <header style="display:flex;flex-direction:column;gap:20px">
+    <span class="label">Proposition · 2 novembre 2026 · à valider</span>
+    <h1>Un parcours par profil, depuis la landing</h1>
+    <p class="lead">Aujourd'hui, la landing propose quatre actions décrites dans le vocabulaire de la chaîne. Je propose de demander d'abord qui arrive, puis d'ouvrir à chacun un chemin court qui mène à son premier résultat, sans compte.</p>
+  </header>
+
+  <section>
+    <span class="label">Ce qui ne va pas aujourd'hui</span>
+    <div class="gap">
+      <div>
+        <h3>La scène 4 de la landing</h3>
+        <ul>
+          <li>Check : « Needs nothing, Wallet no »</li>
+          <li>Declare : « Needs wallet + ERC-8004 id »</li>
+          <li>List : « Needs a wallet with TRUST »</li>
+          <li>Be hired : « Needs an endpoint you run »</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Pourquoi ça bloque</h3>
+        <p>La personne qui gagne le plus avec ARP (40 réponses sur 42 qui nomment un vrai skill, contre 6 sans) est l'utilisateur de Claude. Elle n'apparaît nulle part sur la landing, et la promesse de la tâche 45, « rien de web3 visible », est contredite par trois cartes sur quatre.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <span class="label">L'aiguillage · scène 4 remplacée</span>
+    <h2>Une question, cinq réponses, pas de formulaire</h2>
+    <div class="chooser" aria-label="Maquette de l'aiguillage">
+      <div class="q">Qu'est-ce qui vous amène ?</div>
+      <div class="tiles">
+        <div class="tile primary"><span class="t">J'utilise Claude</span><span class="k">2 min · rien à payer</span></div>
+        <div class="tile"><span class="t">Je construis un agent</span><span class="k">1 commande</span></div>
+        <div class="tile"><span class="t">J'ai publié un outil ou un skill</span><span class="k">son URL</span></div>
+        <div class="tile"><span class="t">J'opère un agent ERC-8004</span><span class="k">chaîne + id</span></div>
+        <div class="tile"><span class="t">Équipe ou registre</span><span class="k">API · licence</span></div>
+      </div>
+    </div>
+    <p class="note">Chaque tuile ne porte qu'un titre et ce qu'il faut avoir sous la main : <code>ui.md</code> interdit les phrases d'explication dans une carte, donc un détail passe par un <code>Hint</code>. Le contour Saffron marque l'action principale et rien d'autre. Le choix est mémorisé dans le navigateur, sans compte, pour que la navigation propose « Votre parcours » au retour.</p>
+  </section>
+
+  <section>
+    <span class="label">Les cinq parcours</span>
+    <h2>Chacun mène à un premier résultat, que la page détecte d'elle-même</h2>
+    <p>Chaque parcours tient sur une page <code>/start/&lt;profil&gt;</code> : une liste d'étapes qui se cochent seules quand ARP voit le résultat, sur la chaîne ou dans le flux local de la barre d'activité. Il n'y a pas de compte à créer : la preuve du progrès, c'est la chaîne. La première étape est déjà cochée (« vous êtes sur testnet, rien à payer »), parce qu'un parcours déjà entamé se termine plus souvent.</p>
+    <p class="note"><span class="st ok">existe</span> construit et utilisable · <span class="st part">en cours</span> partiel ou sur une branche · <span class="st new">à faire</span> à construire</p>
+
+    <div class="paths">
+      <article class="path">
+        <aside>
+          <span class="id">A · J'UTILISE CLAUDE</span>
+          <h3>Utilisateur de Claude, sans bagage technique</h3>
+          <p class="aha"><b>Premier résultat</b>Claude trouve et exécute le skill qu'il faut pour sa tâche.</p>
+        </aside>
+        <div class="body">
+          <ol class="steps">
+            <li><span class="s">Choisir Claude Desktop ou Claude Code : deux tuiles, comme Sketch propose app ou navigateur</span><span class="st new">à faire</span></li>
+            <li><span class="s">Installer : glisser l'extension dans Desktop, ou copier <code>/plugin install</code> dans Code</span><span class="st part">en cours</span></li>
+            <li><span class="s">Copier un prompt d'exemple, choisi parmi les besoins que le catalogue couvre : vignette YouTube, slides, PDF</span><span class="st new">à faire</span></li>
+            <li><span class="s">La page détecte « votre agent : connecté » (barre d'activité, tâche 36)</span><span class="st ok">existe</span></li>
+            <li><span class="s">La première déclaration apparaît dans <code>/activity</code>, financée par ARP (tâche 50)</span><span class="st part">en cours</span></li>
+          </ol>
+          <p class="note">Aucun mot sur le wallet, le TRUST ou la chaîne dans ce parcours : c'est la décision de la tâche 45. Dans Desktop, la recherche marche ; récupérer et exécuter le skill est la tâche 50, qui a fonctionné une fois sur testnet.</p>
+        </div>
+      </article>
+
+      <article class="path">
+        <aside>
+          <span class="id">B · JE CONSTRUIS UN AGENT</span>
+          <h3>Développeur d'agent</h3>
+          <p class="aha"><b>Premier résultat</b><code>arp status</code> lui dit si un outil en panne l'est chez lui ou chez tout le monde.</p>
+        </aside>
+        <div class="body">
+          <ol class="steps">
+            <li><span class="s">Copier <code>npx @arp-protocol/cli init</code>, avec un bouton de copie et un retour « copié », comme chez Graphite</span><span class="st part">en cours</span></li>
+            <li><span class="s">Lancer son agent normalement ; le hook enregistre chaque appel sur sa machine, jamais le contenu</span><span class="st ok">existe</span></li>
+            <li><span class="s">La page attend le premier appel, comme Clerk qui attend « waiting for you to paste your keys »</span><span class="st new">à faire</span></li>
+            <li><span class="s">Lancer <code>arp status</code> et voir son taux face aux autres agents</span><span class="st ok">existe</span></li>
+          </ol>
+          <p class="note">L'étape 1 dépend de la publication du paquet sur npm : la tâche 45 l'a trouvé en 404. À vérifier avant de mettre la commande sur une page publique.</p>
+        </div>
+      </article>
+
+      <article class="path">
+        <aside>
+          <span class="id">C · J'AI PUBLIÉ UN OUTIL</span>
+          <h3>Auteur d'outil MCP ou de skill</h3>
+          <p class="aha"><b>Premier résultat</b>La page de son outil : qui l'utilise, et ses copies à côté de l'original.</p>
+        </aside>
+        <div class="body">
+          <ol class="steps">
+            <li><span class="s">Coller l'URL de son dépôt dans un seul champ</span><span class="st part">en cours</span></li>
+            <li><span class="s">Arriver sur la page du skill ou du dépôt : déclarations, répond ou pas, copies</span><span class="st ok">existe</span></li>
+            <li><span class="s">Copier le badge « used by N agents » pour son README, gratuit (ADR <code>0112</code>)</span><span class="st new">à faire</span></li>
+            <li><span class="s">Pas encore listé : l'ajouter depuis <code>/register</code></span><span class="st ok">existe</span></li>
+          </ol>
+          <p class="note"><code>/search</code> trouve déjà un outil par son dépôt (tâche 48). L'étape 1 se réduit donc à un champ placé sur la landing. L'étape 4 demande aujourd'hui un wallet avec du TRUST : on la finance, ou elle reste payante ?</p>
+        </div>
+      </article>
+
+      <article class="path">
+        <aside>
+          <span class="id">D · J'OPÈRE UN AGENT</span>
+          <h3>Opérateur d'agent ERC-8004</h3>
+          <p class="aha"><b>Premier résultat</b>Son agent dans l'index, avec ce qu'il utilise et s'il répond.</p>
+        </aside>
+        <div class="body">
+          <ol class="steps">
+            <li><span class="s">Donner la chaîne et l'id, ou en créer un : les deux tuiles de <code>/register</code></span><span class="st ok">existe</span></li>
+            <li><span class="s">L'import le relie à son identité (<code>/agent/import</code>)</span><span class="st ok">existe</span></li>
+            <li><span class="s">Déclarer un endpoint, que la sonde d'ARP vérifie</span><span class="st ok">existe</span></li>
+            <li><span class="s">Voir sa page d'agent et son sigil</span><span class="st ok">existe</span></li>
+          </ol>
+          <p class="note">C'est le parcours le plus complet aujourd'hui. Il ne lui manque que d'être trouvable depuis la landing.</p>
+        </div>
+      </article>
+
+      <article class="path">
+        <aside>
+          <span class="id">E · ÉQUIPE OU REGISTRE</span>
+          <h3>Équipes, agrégateurs, registres</h3>
+          <p class="aha"><b>Premier résultat</b>Le flux d'usage d'un outil de leur propre catalogue, prêt à afficher.</p>
+        </aside>
+        <div class="body">
+          <ol class="steps">
+            <li><span class="s">Voir les deux façons de payer : x402 pour un agent, abonnement par carte pour une équipe</span><span class="st new">à faire</span></li>
+            <li><span class="s">Coller une URL d'outil et recevoir un exemple du flux en JSON</span><span class="st new">à faire</span></li>
+            <li><span class="s">Licence de données : un contact affiché en texte, à copier</span><span class="st new">à faire</span></li>
+          </ol>
+          <p class="note">Tout est à faire, et rien n'est payant sur testnet (ADR <code>0102</code>). L'étape 2 est pourtant le meilleur argument de vente de la licence, et elle coûte peu : c'est une lecture publique remise en forme.</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section>
+    <span class="label">Références Mobbin</span>
+    <h2>Ce que je prends à chacun</h2>
+    <div class="refs">
+      <div class="ref"><a class="n" href="https://mobbin.com/screens/5a6bdfa4-9568-42e7-ab4b-871e04ae52cc">Braintrust, « Let's get started »</a><p>Deux tuiles décrites par la situation (« j'ai déjà une app », « j'explore ») plutôt que par un rôle. C'est le ton de l'aiguillage.</p></div>
+      <div class="ref"><a class="n" href="https://mobbin.com/screens/48b075fb-e7b8-4793-96ca-79fbddfd31e9">Upwork, client ou freelance</a><p>Une seule question, et le libellé du bouton change avec la réponse. À reprendre pour le bouton sous l'aiguillage.</p></div>
+      <div class="ref"><a class="n" href="https://mobbin.com/flows/dd89f589-0f8b-44b1-a5f4-81e8f35f7332">fal, onboarding</a><p>« How will you be using fal? », puis un tableau de bord coupé en deux colonnes : l'usage et l'API. Le modèle du parcours E.</p></div>
+      <div class="ref"><a class="n" href="https://mobbin.com/flows/9927d3c2-c02d-4e4f-a8e1-77f2e1baa547">Graphite, la liste qui se coche seule</a><p>« We'll detect and move you to the next step automatically », avec une commande à copier. Le cœur de la page <code>/start</code>.</p></div>
+      <div class="ref"><a class="n" href="https://mobbin.com/flows/bbe3f758-f852-4799-a35c-940e5a65f18f">Clerk, connecter une application</a><p>Les étapes en colonne et un état « en attente de vous ». Pour le parcours B, qui attend le premier appel.</p></div>
+      <div class="ref"><a class="n" href="https://mobbin.com/screens/c1ec8dea-4680-4e35-9128-a2b88e04d921">Sketch, Mac ou navigateur</a><p>Deux façons d'utiliser le même produit, côte à côte. L'étape 1 du parcours A : Desktop ou Code.</p></div>
+      <div class="ref"><a class="n" href="https://mobbin.com/flows/cc66282b-a6eb-448b-8c65-8da15509d7a1">Mintlify, onboarding</a><p>Se termine sur un état « Live » et un historique d'activité. Notre <code>/activity</code> joue ce rôle.</p></div>
+      <div class="ref"><a class="n" href="https://mobbin.com/flows/c5800506-3655-4982-ab3c-dd9d233bcebe">Motion et Otter, les questionnaires</a><p>Le contre-exemple : taille de l'entreprise, poste, service, avant de montrer quoi que ce soit. Une seule question suffit ici.</p></div>
+    </div>
+  </section>
+
+  <section>
+    <span class="label">Trouvé avec ARP</span>
+    <h2>Les principes du skill d'onboarding</h2>
+    <p>J'ai cherché « onboarding » dans ARP sur testnet : il renvoie sept résultats, dont <code>coreyhaines31/marketingskills?skill=onboarding</code> et <code>pbakaus/impeccable?skill=onboard</code>. J'ai lu le premier et retenu ses principes, appliqués ici :</p>
+    <div class="tw"><table>
+      <thead><tr><th>Principe du skill</th><th>Dans ce parcours</th></tr></thead>
+      <tbody>
+        <tr><td>Time-to-value</td><td>Chaque parcours tient en quatre ou cinq étapes et finit sur un résultat visible, pas sur un tutoriel.</td></tr>
+        <tr><td>Un but par session</td><td>Un profil, un premier résultat. Le reste (déclarer, lister, se faire embaucher) vient après.</td></tr>
+        <tr><td>Do, don't show</td><td>On copie une commande ou un prompt et on regarde ce qui se passe ; rien à lire avant.</td></tr>
+        <tr><td>Endowed progress</td><td>La première étape est cochée d'office : testnet, gratuit.</td></tr>
+        <tr><td>Formulaire d'accueil court (Hick)</td><td>Une question, cinq tuiles, aucun champ.</td></tr>
+      </tbody>
+    </table></div>
+  </section>
+
+  <section>
+    <span class="label">À décider</span>
+    <h2>Quatre questions avant d'en faire une tâche</h2>
+    <ol class="qs">
+      <li><strong>Cinq profils, ou trois au lancement ?</strong> A, B et C couvrent les testeurs et les auteurs ; D existe déjà ; E n'a encore rien à vendre sur testnet.</li>
+      <li><strong>L'aiguillage remplace la scène 4, ou s'ajoute comme septième scène ?</strong> Le remplacement garde six scènes et retire les quatre cartes « Needs wallet ».</li>
+      <li><strong>Le parcours C finance l'ajout d'un outil ?</strong> Aujourd'hui, lister demande un wallet avec du TRUST.</li>
+      <li><strong>Le badge entre dans ce lot ?</strong> Il est gratuit depuis l'ADR <code>0112</code>, mais il n'est pas construit, et le domaine des pages par outil n'est pas choisi.</li>
+    </ol>
+    <p class="note">C'est une proposition, rien n'est construit. Une fois tes réponses données, ça devient une tâche dans <code>docs/tasks/</code>, revue par <code>ui-reviewer</code>.</p>
+  </section>
+</main>

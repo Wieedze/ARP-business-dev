@@ -13,10 +13,10 @@ ARP devient le registre public d'usage des outils d'agents : un enregistrement p
 **Le résumé en cinq lignes**
 
 1. **Le problème.** Des dizaines de milliers d'outils, environ la moitié qui ne répondent pas, et aucun signal d'usage réel.
-2. **La place libre.** Chacun voit une facette ; personne ne garde une trace publique de l'usage réel.
+2. **La place libre.** Chacun voit une facette ; personne ne garde une trace publique de l'usage réel. Et sans registre, l'agent répond de mémoire : avec ARP, il nomme un skill qui existe dans 40 réponses sur 42, contre 6 sans.
 3. **La cible d'abord.** Les constructeurs d'agents et les auteurs d'outils MCP et de skills, via Intuition et la communauté ERC-8004.
 4. **Comment avoir les premiers utilisateurs.** Un hook gratuit dans les frameworks d'agents, un badge pour les auteurs, des frais subventionnés.
-5. **Comment gagner de l'argent ensuite.** Les agents paient pour consulter ARP en x402 ; les outils ne paient jamais.
+5. **Comment gagner de l'argent ensuite.** Un produit, deux façons de payer : les agents en x402, les humains et les équipes par abonnement. Les agrégateurs achètent une licence de données. Les outils ne paient jamais.
 
 ## Le marché vu de l'extérieur
 
@@ -60,10 +60,25 @@ ARP se présente comme le registre public d'usage des outils d'agents : une éto
 | Registres et annuaires | L'outil existe | Il est utilisé, par combien d'agents distincts |
 | Avis et notes | Quelqu'un a donné son avis | Un usage réel, signé et daté |
 | Tableaux de bord privés | L'état du moment, chez un fournisseur | Un historique public que personne ne peut réécrire |
+| La mémoire de l'agent | Ce que le modèle connaît, souvent une bibliothèque ou un service payant | Le skill qui existe pour cette tâche, servi seul, sans cloner le dépôt |
+
+**L'argument de découverte** (ajouté le 2 novembre 2026, à côté des autres, sans en remplacer aucun). À la question « que puis je installer pour que tu le fasses toi même ? », Claude avec ARP nomme un skill ou un serveur MCP qui existe dans **40 réponses sur 42** (entre 84 et 99 %) ; sans ARP, dans **6 sur 42** (entre 7 et 28 %). Aucun des deux n'en invente. Sans ARP, il répond de mémoire : une bibliothèque, un service payant, ou il propose de le coder lui même. Il avait accès à la recherche web et ne s'en est pas servi une seule fois.
+
+La phrase : *Without ARP, your agent answers from memory. With ARP, it names the skill that exists for the job.*
+
+L'utilisateur n'a besoin de connaître ni GitHub ni skills.sh : il décrit sa tâche, l'agent trouve le skill, et ARP lui sert ce skill seul, avec un reçu signé, au lieu d'un dépôt qui en contient des dizaines. Dans Claude Desktop, la recherche marche aujourd'hui ; récupérer et exécuter le skill est en cours de finition (tâche 50 du dépôt ARP), sur testnet.
+
+Trois choses que cet argument ne dit pas, parce que la même mesure les contredit :
+
+1. **Que ça coûte moins de tokens.** Ça en coûte environ 5 fois plus (entre 4,2 et 6,2), parce que l'agent lit ce qu'il a trouvé avant de le recommander. Le gain vendu, c'est un outil concret, pas une économie.
+2. **Que le skill trouvé est meilleur.** Un juge à l'aveugle a préféré la réponse sans ARP 26 fois sur 42 ; il ne peut ni installer ni essayer un skill.
+3. **Que ça marche pour n'importe quel besoin.** Les 14 besoins testés sont couverts par le catalogue ; c'est la taille du catalogue qui borne l'argument.
+
+Source : tâche 52 du dépôt ARP, `docs/tasks/52-when-memory-falls-short.md` §3, recalculable avec `bun run scripts/measure/discovery-eval.ts --summarise data/measurements/discovery-eval-install-2026-11-02-recheck.jsonl`.
 
 **Les messages par public.**
 
-1. **Constructeurs d'agents.** *Pick tools other agents actually use.* Un appel avant de choisir un outil, gratuit, lisible par l'agent lui même.
+1. **Constructeurs d'agents.** *Pick tools other agents actually use.* Un appel avant de choisir un outil, gratuit, lisible par l'agent lui même. Et quand la mémoire ne suffit pas : *your agent names the skill that exists for the job* (40 réponses sur 42 avec ARP, 6 sur 42 sans).
 2. **Auteurs d'outils MCP et de skills.** *Prove your tool is used, not just installed.* Un badge qui affiche l'usage réel et distingue l'original de ses copies.
 3. **Registres et agrégateurs** (Bazaar, HOL, Glama, 8004scan). *Add a usage column you don't have to build.* Une source de données ouverte, sans exclusivité.
 4. **Écosystème Intuition.** *The first live use case for agents on the graph.* Du trafic réel d'agents qui écrivent des triples, ce que l'écosystème cherche à montrer.
@@ -134,7 +149,7 @@ D'ici fin février 2027, ARP doit passer de zéro à cent agents distincts qui d
 | Construire (novembre 2026) | Hook gratuit et badge ; page publique des fiches ; subvention Intuition postée ; appel à Bpifrance | |
 | Semer (déc. 2026 à mi janv. 2027) | 10 proches avec le hook ; message aux opérateurs ; premier rapport public ; hackathon ETHGlobal si possible | 10 agents tiers, six semaines après la mise en ligne |
 | Brancher (mi janv. à fin févr. 2027) | Plugins ElizaOS et Daydreams ; registre MCP et Spaces HF ; adaptateur proposé à HOL ; rapport hebdo | 100 agents distincts |
-| Prouver (mars 2027) | Test du badge à 1 € ; profil d'usage 8004scan ; bilan go ou pivot ; démo pour EthCC, avril 2027 | |
+| Prouver (mars 2027) | Premier contact licence avec un agrégateur ; profil d'usage 8004scan ; bilan go ou pivot ; démo pour EthCC, avril 2027 | |
 
 Indicateur principal : déclarations par semaine venant d'adresses que tu ne contrôles pas.
 
@@ -142,19 +157,30 @@ Si la première porte n'est pas franchie six semaines après la mise en ligne, o
 
 ## Modèle économique
 
-Le modèle suit l'ADR `0094` du dépôt ARP : **les agents paient pour consulter, les outils ne paient jamais.** Pendant la phase de lancement, ARP ne cherche pas de revenu : il cherche la preuve que des agents qu'on ne connaît pas s'en servent.
+Le modèle suit l'ADR `0094` du dépôt ARP : **les agents paient pour consulter, les outils ne paient jamais.** L'ADR `0112` du même dépôt y ajoute deux choses, décidées le 2 novembre 2026 : un seul produit avec deux façons de payer, et une licence de données vendue aux agrégateurs. Pendant la phase de lancement, ARP ne cherche pas de revenu : il cherche la preuve que des agents qu'on ne connaît pas s'en servent.
 
 | Élément | Comment | Ce que ça prouve |
 | --- | --- | --- |
-| Revenus | Les agents paient en USDC via x402 pour lire l'index, les outils MCP et les faits hors chaîne. Pas de compte. | Qu'ARP est utile aux agents : le nombre d'appels payés est la mesure |
+| Revenus : les agents | Les agents paient en USDC via x402 pour lire l'index, les outils MCP et les faits hors chaîne. Pas de compte. Sur testnet, la consultation reste gratuite (ADR `0102`) | Qu'ARP est utile aux agents : le nombre d'appels payés est la mesure |
+| Revenus : les humains et les équipes | Le même produit, payé par abonnement par carte, avec une clé d'API et des quotas | Que des équipes paient pour ce qu'elles utilisent déjà |
+| Revenus : les agrégateurs | Une licence de données : un flux prêt à afficher, par outil de leur catalogue (combien d'agents l'utilisent, s'il répond, s'il a changé), livré par API avec un engagement de service | Qu'un registre tiers préfère acheter la colonne d'usage plutôt que la construire |
 | Coûts | ARP finance les dépôts qui apportent une preuve, dans des limites par agent et par jour ; l'agent reste propriétaire de sa position | Que l'usage existe |
-| Neutralité | Les outils ne paient jamais, donc personne n'achète sa place. ARP achète le TRUST qu'il dépense et n'en vend jamais | Que le classement reste crédible |
+| Neutralité | Les outils ne paient jamais, badge compris, donc personne n'achète sa place. ARP achète le TRUST qu'il dépense et n'en vend jamais | Que le classement reste crédible |
 | Financement du lancement | Subventions d'écosystème (Intuition d'abord) pour alimenter la trésorerie de financement | Qu'un écosystème soutient la démarche |
-| But final | Une part des revenus des agents et des subventions reversée aux outils utilisés ; ARP prépare les paiements sans jamais les détenir (ADR `0076`) | Que l'argent suit l'usage |
+| But final | Une part des revenus et des subventions reversée aux outils utilisés ; ARP prépare les paiements sans jamais les détenir (ADR `0076`) | Que l'argent suit l'usage |
 
-Une formule d'abonnement pourra venir plus tard, sous forme de pass acheté une fois en x402. Avant le mainnet, la séparation entre paiements x402 et financement en TRUST doit être vérifiée par un juriste.
+**La licence de données, en clair.** Les agrégateurs (Glama, Smithery, HOL, 8004scan, le registre d'agents d'AWS) montrent chacun ce qui existe, mais aucun ne sait ce qui est vraiment utilisé. ARP a cette information.
 
-**Signaux d'accélération :** des déclarations d'adresses que tu ne contrôles pas chaque semaine, des premiers appels payés en x402 sans relance, un agrégateur qui demande l'accès aux données.
+- **Ce qu'ils achètent :** pour chaque outil de leur catalogue, un flux prêt à afficher, mis à jour, avec un engagement de service.
+- **Ce qu'ils n'achètent pas :** la donnée elle même. Elle reste publique sur le graphe, et n'importe qui peut la lire gratuitement. Ils paient pour ne pas avoir à la lire, la nettoyer et la maintenir eux mêmes.
+- **Le modèle existe ailleurs :** Dune et The Graph vendent l'accès pratique à des données de chaîne que tout le monde peut lire.
+- **Pourquoi ce serait le premier revenu :** un ou deux contrats annuels suffisent, au lieu de milliers de petits paiements d'agents, et il n'y a pas besoin d'attendre le mainnet. Il faut en revanche une donnée d'usage qui vaille d'être affichée, donc des déclarations venant d'agents tiers. Aucun agrégateur n'a encore dit qu'il paierait : c'est une hypothèse à tester.
+
+**Le badge reste gratuit.** Le badge « used by N agents » est un outil de distribution, comme ceux de shields.io : chaque README qui l'affiche fait connaître ARP. Le faire payer aux auteurs contredirait « les outils ne paient jamais ». Le test du badge à 1 € est abandonné.
+
+Le pass acheté une fois en x402, prévu plus tôt, reste possible pour les agents. Avant le mainnet, la séparation entre paiements x402 et financement en TRUST doit être vérifiée par un juriste.
+
+**Signaux d'accélération :** des déclarations d'adresses que tu ne contrôles pas chaque semaine, des premiers appels payés en x402 sans relance, un agrégateur qui demande l'accès aux données ou signe une licence, une équipe qui prend un abonnement.
 
 **Signaux d'arrêt ou de pivot :** fin février 2027, plus de 90 % des déclarations viennent de tes propres agents, ou aucun agent ne paie pour consulter.
 

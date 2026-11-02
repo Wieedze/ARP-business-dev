@@ -59,8 +59,9 @@ Quatre longueurs, toujours dans le même ordre : un problème, un chiffre, ce qu
 2. **Pourquoi ça dure.** Tous les signaux actuels se fabriquent gratuitement : fausses étoiles, copies qui battent l'original en installs, avis de comptes sybil.
 3. **L'idée.** L'usage est le seul signal qu'un outil ne peut pas produire seul : il faut qu'un autre agent l'appelle, et que ça marche.
 4. **Le produit.** Une commande d'installation, un hook dans le runtime de l'agent, et `arp status` qui répond à « c'est moi, ou c'est cassé pour tout le monde ? ». La déclaration publique est un effet secondaire. Le cœur est déjà construit sur testnet.
+   **La découverte, mesurée.** Quand la mémoire ne suffit pas, Claude avec ARP nomme un skill ou un serveur MCP qui existe dans 40 réponses sur 42, contre 6 sans ARP. L'utilisateur n'a besoin de connaître ni GitHub ni skills.sh, et ne clone aucun dépôt : ARP sert le skill seul.
 5. **Pourquoi maintenant.** 40 fois plus de serveurs MCP en un an, des agents qui paient déjà leurs outils via x402, et une norme qui laisse volontairement la couche de confiance aux autres.
-6. **L'argent.** Les agents paient pour consulter ARP, en USDC via x402 ; les outils ne paient jamais, donc personne n'achète sa place. ARP finance les dépôts qui apportent une preuve. Au bout, une part des revenus des agents reversée aux outils utilisés.
+6. **L'argent.** Un produit, deux façons de payer : les agents en USDC via x402, les humains et les équipes par abonnement. Les agrégateurs achètent une licence de données, un flux d'usage prêt à afficher ; la donnée, elle, reste publique. Les outils ne paient jamais, badge compris, donc personne n'achète sa place. ARP finance les dépôts qui apportent une preuve. Au bout, une part des revenus des agents reversée aux outils utilisés.
 7. **La suite.** Cent agents que je ne contrôle pas avant EthCC, en avril 2027, et chaque chiffre recalculable depuis le graphe.
 
 ## Le vocabulaire
@@ -86,6 +87,7 @@ Chaque public entend une seule chose : ce qu'il y gagne aujourd'hui. Le but fina
 | Public | Ce qu'il veut | Le message | La preuve à montrer |
 | --- | --- | --- | --- |
 | Développeurs d'agents | Que leur agent ne plante pas | *Know if a broken tool is your problem or everyone's.* | `arp status` en démo de 30 secondes |
+| Utilisateurs de Claude, sans bagage technique | Que l'agent fasse la tâche lui même | *Without ARP, your agent answers from memory. With ARP, it names the skill that exists for the job.* | Le même prompt, avec et sans ARP : 40 réponses sur 42 contre 6 |
 | Auteurs d'outils et de skills | Être reconnus, distingués des copies | *Prove your tool is used, not just installed.* | La page de leur outil face à ses copies, avec le badge, gratuit |
 | Opérateurs d'agents ERC-8004 | Sortir du lot des agents morts | *Show your agents answer, and what they run on.* | Le taux d'agents qui répondent, et les leurs dedans |
 | Agrégateurs (Glama, HOL, 8004scan, Bazaar) | Une colonne de plus sans la construire | *Add a usage column you don't have to build.* | Le format des rapports et un adaptateur |
@@ -102,11 +104,12 @@ Une réponse honnête et courte vaut mieux qu'une réponse qui esquive : les inv
 | *« Un agent peut déclarer n'importe quoi. »* | Oui, et c'est pour ça qu'une déclaration est signée et attribuée, que la place d'un outil vient des dépôts des autres, et qu'ARP ne finance que les dépôts qui apportent une preuve. Sans preuve, c'est indexé comme *declared*, jamais *proven*. On compte par opérateur, pas par agent. |
 | *« Pourquoi on chain ? »* | Pour que personne, ARP compris, ne puisse réécrire l'historique, et que n'importe qui puisse refaire les chiffres sans nous demander. Le privé reste sur la machine ; seul « cet agent utilise cet outil » devient public. |
 | *« Glama, HOL ou AWS ajouteront la colonne. »* | Possible. Ils ne voient chacun qu'une facette et ont intérêt à leurs propres listings. Un registre neutre est plus crédible, et l'historique accumulé ne se copie pas. Le meilleur scénario est d'être leur source. |
-| *« Qui paie ? »* | Les agents qui consultent ARP, en USDC via x402, sans compte. Les outils ne paient jamais : c'est ce qui garde ARP neutre. ARP achète le TRUST qu'il dépense pour financer les dépôts prouvés, et n'en vend jamais (ADR `0094`). |
+| *« Qui paie ? »* | Les agents qui consultent ARP, en USDC via x402, sans compte ; les équipes par abonnement ; les agrégateurs, par une licence de données qui leur évite de lire et maintenir le graphe eux mêmes. Les outils ne paient jamais : c'est ce qui garde ARP neutre. ARP achète le TRUST qu'il dépense pour financer les dépôts prouvés, et n'en vend jamais (ADR `0094`). |
 | *« Les registres curatés par jetons ont tous échoué. »* | Ceux qui votaient sur des critères subjectifs, oui. Kleros Curate tient depuis 2019 sur des critères vérifiables. ARP ne fait pas voter sur la qualité : il enregistre un usage et une joignabilité que tout le monde peut vérifier. |
 | *« Personne n'interroge les registres aujourd'hui. »* | C'est vrai pour les requêtes mesurées. C'est pourquoi le premier produit est utile à un développeur seul, et pourquoi la distribution passe par une skill et des plugins, là où les agents cherchent déjà des outils. |
 | *« Le jeton TRUST a beaucoup baissé. »* | ARP ne dépend pas de son prix : la déclaration a un coût, pas une valeur spéculative. Les revenus sont en USDC. |
 | *« Tu es seul. »* | Oui. Le dépôt montre la méthode, et le cœur du produit est déjà construit sur testnet. La première levée servira à recruter. |
+| *« Consulter ARP coûte plus de tokens. »* | Oui, environ 5 fois plus, et on ne dit pas le contraire. Ce qu'on achète, c'est un outil réel : avec ARP, l'agent nomme un skill qui existe dans 40 réponses sur 42 ; sans ARP, dans 6, et il ne cherche pas sur le web même quand il le peut. |
 | *« Quelle différence avec 8004scan ? »* | 8004scan compose un score à partir d'entrées gratuites. ARP ne note pas, et ses entrées coûtent quelque chose. On peut aussi leur fournir la donnée d'usage. |
 
 ## Le kit de lancement
@@ -154,11 +157,12 @@ Règle : factuel, sans moquerie, et aucun chiffre sans sa source.
 
 > **arp: check a tool before you use it**
 >
-> Before adding or calling an MCP server, skill or x402 endpoint, ask ARP whether it works for other agents, how many operators use it, and whether it changed recently. If it is broken everywhere, ARP lists what other agents switched to. Declaring what you used is optional and builds your agent's public record.
+> When a task needs a tool you don't know, ARP names the skill or MCP server that exists for it, and serves that one skill without cloning its repository. Before adding or calling an MCP server, skill or x402 endpoint, ask ARP whether it works for other agents, how many operators use it, and whether it changed recently. If it is broken everywhere, ARP lists what other agents switched to. Declaring what you used is optional and builds your agent's public record.
 
 ## Ce qui reste à produire avant le lancement
 
 - [ ] **La démo de 30 secondes** : un outil casse, `arp status` dit « broken everywhere » et propose l'alternative. Enregistrée en vidéo d'écran.
+- [ ] **La démo de découverte** : dans Claude Desktop, une tâche décrite en une phrase, l'agent trouve le skill par ARP, le récupère et l'exécute. Attend la fin de la tâche 50 du dépôt ARP.
 - [ ] **Une page d'accueil** avec la phrase, la démo, la commande d'installation et l'inscription à la mise à jour mensuelle.
 - [ ] **Une adresse e-mail de contact** à mettre sur la dernière slide du deck (`[YOUR EMAIL]`).
 - [ ] **Le premier rapport**, avec des mesures refaites en novembre et leurs scripts.

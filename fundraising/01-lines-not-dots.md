@@ -12,7 +12,7 @@ Conséquence pratique : la levée commence maintenant, six mois avant la demande
 | Déc. 2026 | 10 proches installés ; opérateurs contactés ; premier rapport public | Adresses des agents ; rapport en ligne |
 | Janv. 2027 | Porte 1 franchie ; plugins ElizaOS et Daydreams | Liens des plugins publiés |
 | Févr. 2027 | Sous registre MCP ; adaptateur HOL ; porte 2 ; Base Batches 005 si elle ouvre | Lien de l'issue HOL ; dossier envoyé |
-| Mars 2027 | Test du badge à 1 € ; profil d'usage chez 8004scan ; démo EthCC prête | Nombre d'éditeurs payants ; démo enregistrée |
+| Mars 2027 | Licence de données proposée à un agrégateur ; profil d'usage chez 8004scan ; démo EthCC prête | Réponse d'un agrégateur ; démo enregistrée |
 | Avr. 2027 | EthCC, Cannes : démo publique, premiers rendez vous de levée | Cinq mises à jour envoyées, chacune avec ses chiffres |
 
 ## Les trois chiffres de la ligne

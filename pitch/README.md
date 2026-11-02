@@ -12,7 +12,7 @@ The living versions are the Claude artifacts "ARP Pitch Deck" (14 slides, Englis
 | Mission | Keep an open record of what agents actually use, and whether it works. |
 | What ARP sells (ADR 0075) | The place in the answer, and your place comes from others. |
 | How money moves (ADR 0076) | ARP plans payments and never holds one. |
-| Revenue (ADR 0094) | Agents pay to consult ARP in USDC over x402. Tools never pay. |
+| Revenue (ADR 0094, 0112) | One product, two ways to pay: agents in USDC over x402, teams by card subscription. Aggregators license the usage feed. Tools never pay, the badge included. |
 | Role (ADR 0094) | ARP is the directory and the verifier, never the relay. |
 
 ## 10 seconds
