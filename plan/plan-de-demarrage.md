@@ -68,11 +68,12 @@ La phrase : *Without ARP, your agent answers from memory. With ARP, it names the
 
 L'utilisateur n'a besoin de connaître ni GitHub ni skills.sh : il décrit sa tâche, l'agent trouve le skill, et ARP lui sert ce skill seul, avec un reçu signé, au lieu d'un dépôt qui en contient des dizaines. Dans Claude Desktop, la recherche marche aujourd'hui ; récupérer et exécuter le skill est en cours de finition (tâche 50 du dépôt ARP), sur testnet.
 
-Trois choses que cet argument ne dit pas, parce que la même mesure les contredit :
+Quatre choses que cet argument ne dit pas :
 
 1. **Que ça coûte moins de tokens.** Ça en coûte environ 5 fois plus (entre 4,2 et 6,2), parce que l'agent lit ce qu'il a trouvé avant de le recommander. Le gain vendu, c'est un outil concret, pas une économie.
 2. **Que le skill trouvé est meilleur.** Un juge à l'aveugle a préféré la réponse sans ARP 26 fois sur 42 ; il ne peut ni installer ni essayer un skill.
 3. **Que ça marche pour n'importe quel besoin.** Les 14 besoins testés sont couverts par le catalogue ; c'est la taille du catalogue qui borne l'argument.
+4. **Qu'ARP trouve mieux que skills.sh.** La mesure compare Claude avec ARP à Claude seul, pas à skills.sh ; un Claude branché sur skills.sh en trouverait probablement autant. Pour la recherche seule, skills.sh est meilleur aujourd'hui. Ce qu'ARP ajoute, c'est la preuve d'usage (voir « ARP face à skills.sh » dans `pitch/kit-de-presentation.md`).
 
 Source : tâche 52 du dépôt ARP, `docs/tasks/52-when-memory-falls-short.md` §3, recalculable avec `bun run scripts/measure/discovery-eval.ts --summarise data/measurements/discovery-eval-install-2026-11-02-recheck.jsonl`.
 

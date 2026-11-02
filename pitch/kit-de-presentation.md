@@ -112,6 +112,31 @@ Une réponse honnête et courte vaut mieux qu'une réponse qui esquive : les inv
 | *« Consulter ARP coûte plus de tokens. »* | Oui, environ 5 fois plus, et on ne dit pas le contraire. Ce qu'on achète, c'est un outil réel : avec ARP, l'agent nomme un skill qui existe dans 40 réponses sur 42 ; sans ARP, dans 6, et il ne cherche pas sur le web même quand il le peut. |
 | *« Quelle différence avec 8004scan ? »* | 8004scan compose un score à partir d'entrées gratuites. ARP ne note pas, et ses entrées coûtent quelque chose. On peut aussi leur fournir la donnée d'usage. |
 
+## ARP face à skills.sh
+
+Pour les développeurs surtout, qui connaissent skills.sh. Préparé par la session arp-7f le 2 novembre 2026.
+
+**La phrase :** skills.sh dit ce qui est populaire ; ARP vise à dire ce qui est vraiment utilisé, et qui le dit.
+
+| | skills.sh | ARP |
+| --- | --- | --- |
+| Ce qui est compté | Les installations (`npx skills add`) | Les usages déclarés par des agents identifiés (ERC-8004), avec du TRUST derrière |
+| Qui détient la donnée | La base d'une entreprise | Personne : elle est publique sur Intuition, n'importe qui peut la lire et la recompter |
+| Ce que dit un chiffre | « Installé 100 000 fois », même si personne ne s'en sert | « L'agent n° 10 dit l'avoir utilisé, a payé pour l'inscrire, et le serveur d'ARP lui a servi le skill (reçu signé) » |
+| Périmètre | Les skills | Les skills, les serveurs MCP, les API et les agents eux-mêmes |
+| Recherche | Sémantique, sur tout son catalogue (son API répond `"searchType":"semantic"`, d'après arp-7f) | Par mots, sur 662 skills |
+
+Sur l'échelle de preuve (`docs/09` §3 du dépôt ARP), une installation reste au mieux une affirmation : elle est gratuite et ne prouve rien. Une déclaration ARP est publique, attribuée et payante, et elle peut porter une preuve : un reçu de contenu (l'accès, ADR `0109`), le hook (l'appel, `docs/14`), plus tard un paiement (le fait, tâches 43 et 44). ARP vise les deux derniers échelons, *staked* et *proven*.
+
+**Ce qu'on ne dit pas, et qui doit toujours accompagner ce tableau :**
+
+1. **Pour la recherche seule, skills.sh est meilleur aujourd'hui.** ARP réutilise même ses descriptions et ses compteurs d'installations (`data/catalogue/skill-facts.json`).
+2. **La mesure de découverte ne compare pas ARP à skills.sh.** Elle compare Claude avec ARP à Claude seul : 40 réponses sur 42 contre 6 (tâche 52). Un Claude branché sur skills.sh en trouverait probablement autant.
+3. **L'écart est surtout potentiel.** Sur testnet, presque tous les skills ont 0 déclaration ; seuls les agents n° 9 et n° 10, les nôtres, ont déclaré quelque chose (2 novembre 2026).
+4. **Aucune économie de tokens :** 3,14 fois plus que la réponse de mémoire (tâche 45c), 5,19 fois sur les questions d'installation (tâche 52).
+
+**La direction que ça indique** (dans `FUTURE.md` du dépôt ARP, reportée par toi pour la preuve de concept) : ne pas concurrencer skills.sh sur la recherche. S'appuyer dessus, avec une copie en cache pour quand il tombe, et ajouter ce qui lui manque : la preuve d'usage.
+
 ## Le kit de lancement
 
 Le lancement tient en une journée : le premier rapport sort, la skill et les plugins sont publiés le même jour, et chaque post renvoie vers les deux. Rien n'est annoncé avant que le rapport existe.
