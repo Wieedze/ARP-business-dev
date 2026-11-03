@@ -4,12 +4,13 @@
 
 ## Vision, mission et but final
 
-Tout le reste découle de ces trois phrases. Elles servent de référence : si un texte sur ARP les contredit, c'est le texte qu'il faut corriger.
+Tout le reste découle de ces phrases. Elles servent de référence : si un texte sur ARP les contredit, c'est le texte qu'il faut corriger.
 
 | | Français | Anglais (marque) |
 | --- | --- | --- |
 | **Vision** | Un monde où l'argent suit l'usage : les outils dont les agents dépendent vraiment sont visibles et payés. | *Money follows usage.* |
 | **Mission** | Tenir un registre public et ouvert de ce que les agents utilisent vraiment, et si ça marche. | *Keep an open record of what agents actually use, and whether it works.* |
+| **Accroche** | Ton agent trouve pour toi le bon skill, le bon outil ou le bon agent, et montre ceux que les autres agents utilisent vraiment. | *Your agent finds the right skill, tool or agent for you, and shows which ones other agents actually use.* |
 | **But final** | Faire circuler l'argent vers les outils que les agents utilisent vraiment. | *ARP makes money flow to the tools agents actually use.* |
 | **Signature** | Les étoiles montrent qui a regardé. ARP montre qui s'en est servi. | *Stars show who looked. ARP shows who used it.* |
 
@@ -27,11 +28,11 @@ Tout le reste découle de ces trois phrases. Elles servent de référence : si u
 
 ## Les pitchs
 
-Quatre longueurs, toujours dans le même ordre : un problème, un chiffre, ce que fait ARP, le but. Les versions anglaises servent pour la marque, les investisseurs et les communautés ; la version française sert pour Bpifrance et les événements en France.
+L'accroche a remplacé le but final comme pitch en une phrase le 3 novembre 2026 (ADR `0126` du dépôt ARP) : le but reste, comme objectif, et les pitchs plus longs finissent toujours dessus. Quatre longueurs, toujours dans le même ordre : un problème, un chiffre, ce que fait ARP, le but. Les versions anglaises servent pour la marque, les investisseurs et les communautés ; la version française sert pour Bpifrance et les événements en France.
 
 **Une phrase**
 
-> ARP makes money flow to the tools agents actually use.
+> Your agent finds the right skill, tool or agent for you, and shows which ones other agents actually use.
 
 **10 secondes**
 

@@ -6,6 +6,7 @@ The living versions are the Claude artifacts "ARP Pitch Deck" (14 slides, Englis
 
 | | |
 | --- | --- |
+| One-liner | Your agent finds the right skill, tool or agent for you, and shows which ones other agents actually use. |
 | Goal | ARP makes money flow to the tools agents actually use. |
 | Signature | Stars show who looked. ARP shows who used it. |
 | Vision | Money follows usage. |

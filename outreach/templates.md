@@ -18,7 +18,7 @@ Use when `channel = intro` and the connector is a person Maxime knows.
 >
 > ---
 >
-> Maxime (co-founder of Sofia, Intuition grantee) is building ARP, which makes money flow to the tools AI agents actually use. Agents record each tool call that works on an open graph anyone can verify. {One traction line from the latest numbers.} He's not raising yet and would value {investor}'s view on {topic from the pipeline "why" column}.
+> Maxime (co-founder of Sofia, Intuition grantee) is building ARP, which lets an AI agent find the right skill, tool or agent, and shows which ones other agents actually use. Agents record each tool call that works on an open graph anyone can verify. {One traction line from the latest numbers.} He's not raising yet and would value {investor}'s view on {topic from the pipeline "why" column}.
 
 ## T2. First contact to an agent operator (users)
 
