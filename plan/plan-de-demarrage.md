@@ -66,7 +66,7 @@ ARP se présente comme le registre public d'usage des outils d'agents : une éto
 
 La phrase : *Without ARP, your agent answers from memory. With ARP, it names the skill that exists for the job.*
 
-L'utilisateur n'a besoin de connaître ni GitHub ni skills.sh : il décrit sa tâche, l'agent trouve le skill, et ARP lui sert son fichier SKILL.md avec un reçu signé. Les scripts dont certains skills ont besoin ne sont pas encore servis : c'est une précondition proposée par la tâche 54, pas encore décidée. Dans Claude Desktop, le parcours marche de bout en bout depuis le 2 novembre 2026, sur testnet et sur ta machine : l'extension 0.2.1 trouve le skill, le récupère et déclare son usage, et ARP paie la déclaration (tâche 50 du dépôt ARP).
+L'utilisateur n'a besoin de connaître ni GitHub ni skills.sh : il décrit sa tâche, l'agent trouve le skill, et ARP lui sert le skill avec un reçu signé. Dans Claude Code, c'est le dossier entier du skill, scripts compris, sous un seul reçu (tâche 57 du dépôt ARP). Dans Claude Desktop, qui n'exécute pas de scripts, c'est le seul fichier SKILL.md. Dans Claude Desktop, le parcours marche de bout en bout depuis le 2 novembre 2026, sur testnet et sur ta machine : l'extension 0.2.1 trouve le skill, le récupère et déclare son usage, et ARP paie la déclaration (tâche 50 du dépôt ARP).
 
 Quatre choses que cet argument ne dit pas :
 
